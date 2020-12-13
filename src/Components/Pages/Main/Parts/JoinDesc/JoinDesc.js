@@ -1,5 +1,4 @@
 import React from "react";
-import { whippetsRacing } from "../../../../../media/whippets-racing2-min.jpg";
 import { Link } from "react-router-dom";
 
 function JoinDesc() {
