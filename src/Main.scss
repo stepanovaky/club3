@@ -16,6 +16,7 @@ $offsetColor:  rgb(144, 32, 255, 0.2);
 $notBlack: #181123;
 $inputShadow: rgb(231, 231, 228);
 $inputBorder: rgb(204, 201, 198);
+$navColor: #94b1ff;
 
 
 //UNIVERSAL
@@ -40,6 +41,10 @@ a, a:link, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 
+input[type="button"] {
+    cursor: pointer;
+}
+
 input[type="button"]:focus {
     outline: none;
 }
@@ -60,6 +65,11 @@ p {
     background-color: #181123;
     color: #aba5b4;
     margin-top: 25px;
+    position: absolute;
+   
+    left: 0;
+    
+    width: 100%;
 }
 
 .w100per {
@@ -135,6 +145,7 @@ p {
     text-align: center;
     width: 50px;
     background-color: #fff;
+    cursor:pointer;
 }
 
 .join-us-button:hover {
@@ -164,6 +175,7 @@ p {
 nav {
     margin-left: 15px;
     display: flex;
+    justify-content: space-between;
 }
 
 .header-container {
@@ -171,6 +183,10 @@ nav {
     height: 45px;
     box-shadow: 0 1px 20px 0 rgba(239, 227, 221, 0.35);
 
+}
+
+.right-bundle {
+    display: flex;
 }
 
 .logo-container {
@@ -189,6 +205,40 @@ nav {
     margin-bottom: 10px;
 }
 
+.dropdown-navigtion {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.nav-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.nav-link {
+    padding: 20px 25px;
+}
+
+.dropdown {
+    background: $navColor;
+    position: relative;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.nav-closed {
+    height: 0px;
+    transition: height 250ms ease;
+}
+
+.nav-open {
+    height: 420px;
+    transition: height 250ms ease;
+}
+
+
+
 
 //PAGES
 
@@ -199,6 +249,8 @@ nav {
     position: relative;
     height: 600px;
     background-image: linear-gradient(180deg, rgba(26, 19, 69, 0.9), rgba(26, 19, 69, 0.7)), url('./media/whippets-from-box-min.jpg');
+background-size: cover;
+background-position: center;
 }
 
 .center-vertically-container {
@@ -249,20 +301,9 @@ nav {
     margin-bottom: 25px;
 }
 
-.feature-circle {
-    width: 50px;
-    height: 50px;
-    background-color: $cardShadow;
-    position: relative;
-    border-radius: 50%;
-    bottom: 50px;
-    left: 120px;
-}
 
-.desc-relative-up {
-    position: relative;
-    bottom: 50px;
-}
+
+
 
 .lr-div, .rl-div {
     padding-top: 20px;
@@ -394,6 +435,26 @@ nav {
 //     margin-right: auto;
 // }
 
+//ABOUT
+
+.about-div {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.about-wrapper {
+    margin-top: 40px;
+}
+
+.about-title h2 {
+    margin-bottom: 25px;
+    background-color: hsla(0, 0%, 86.7%, 0);
+    text-align: left;
+    vertical-align: center;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 600;
+}
 
 //MEDIA QUERIES
 

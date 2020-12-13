@@ -9,7 +9,6 @@ function Features() {
         <div className="feature-icon">
           <IconContext.Provider value={{ size: "3em" }}>
             {feature.icon}
-            <div className="feature-circle"></div>
           </IconContext.Provider>
         </div>
         <div className="desc-relative-up">
