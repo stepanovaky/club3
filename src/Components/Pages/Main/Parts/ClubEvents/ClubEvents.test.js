@@ -1,7 +1,7 @@
 import React from "react";
-import App from "./App";
+import ClubEvents from "./ClubEvents";
 import { shallow } from "enzyme";
 
 it("renders without crashing", () => {
-  shallow(<App />);
+  shallow(<ClubEvents />);
 });

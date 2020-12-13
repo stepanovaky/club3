@@ -1,7 +1,7 @@
 import React from "react";
-import App from "./App";
+import BackgroundImage from "./BackgroundImage";
 import { shallow } from "enzyme";
 
 it("renders without crashing", () => {
-  shallow(<App />);
+  shallow(<BackgroundImage />);
 });

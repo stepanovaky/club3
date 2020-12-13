@@ -1,0 +1,376 @@
+//IMPORTS
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+@import './normalize.css';
+
+//VARIABLES
+
+$textColor: #353140;
+$buttonBorder: rgb(24, 24, 209);
+$buttonShadow: rgb(58, 58, 184, 0.2);
+$overlayButtonBorder: rgb(198, 53, 255);
+$cardBorder: rgb(32, 32, 255);
+$cardShadow: rgb(83, 83, 255, 0.2);
+$placeholderColor: rgb(235, 235, 235);
+$offsetColor:  rgb(144, 32, 255, 0.2);
+
+
+//UNIVERSAL
+
+h1, h2, h3, h4, h5, h6, input, p, a {
+    font-family: Barlow, sans-serif;
+    color: $textColor;
+    font-size: 17px;
+    line-height: 29px;
+    font-weight: 500;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    color: $textColor;
+    text-decoration: none;
+}
+
+input[type="button"]:focus {
+    outline: none;
+}
+
+h5 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.w100per {
+    width: 100%;
+}
+
+.container {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.bmargin {
+    padding-top: 65px;
+}
+
+.paragraph-small {
+    font-size: 15px;
+    line-height: 23px;
+}
+
+.frame {
+    overflow: hidden;
+    padding: 10px;
+    border: 1.5px solid $cardBorder;
+    background-color: #fff;
+    box-shadow: 6px 6px $cardShadow;
+    border-radius: 4px;
+
+}
+
+.frame-image {
+    height: 280px;
+    border-radius: 4px;
+}
+
+// caption/section-header || text-center
+.title-bundle { 
+    padding: 0px 15px 40px 15px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.caption h2 {
+    color: $buttonBorder;
+    font-size: 13px;
+    line-height: 17px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.section-header h2{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 700;
+}
+
+//BUTTONS
+
+.join-us-button {
+    padding: 9px 35px 9px 35px;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 700;
+    transition: box-shadow 250ms ease;
+    border: 2px solid $buttonBorder;
+    box-shadow: 6px 6px $buttonShadow;
+    border-radius: 4px;
+    text-align: center;
+    width: 50px;
+    background-color: #fff;
+}
+
+.join-us-button:hover {
+    transition: box-shadow 250ms ease;
+    box-shadow: 4px 4px $buttonShadow;
+}
+
+.learn-more-button {
+    border: 2px solid $overlayButtonBorder;
+    color: $overlayButtonBorder;
+    padding: 8px 32px;
+    border-radius: 4px;
+    background-color: transparent;
+    transition: all 250ms ease;
+    font-weight: 600;
+}
+
+.learn-more-button:hover {
+    background-color: $overlayButtonBorder;
+    color: $textColor;
+    transition: all 250ms ease;
+}
+
+
+
+//HEADER
+nav {
+    margin-left: 15px;
+    display: flex;
+}
+
+.header-container {
+    padding: 14px 10px 16px 10px;
+    height: 45px;
+    box-shadow: 0 1px 20px 0 rgba(239, 227, 221, 0.35);
+
+}
+
+.logo-container {
+    width: 100px;
+    height: 30px;
+}
+
+.menu-container {
+    padding: 5px 15px;
+}
+
+.menu-icon-container {
+    height: 25px;
+    width: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+//PAGES
+
+//MAIN
+
+.background-image-container {
+    width: 100%;
+    position: relative;
+    height: 600px;
+    background-image: linear-gradient(180deg, rgba(26, 19, 69, 0.9), rgba(26, 19, 69, 0.7)), url('./media/whippets-from-box-min.jpg');
+}
+
+.center-vertically-container {
+    padding-top: 75px;
+    padding-bottom: 100px;
+}
+
+.background-image-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    opacity: 1;
+    color: #fff;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.background-image-content-heading, .background-image-content-paragraph {
+    color: #fff;
+}
+
+.background-image-content-heading {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 36px;
+    line-height: 48px;
+}
+
+.background-image-content-paragraph {
+    margin-top: 25px;
+    margin-bottom: 35px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+.feature-container {
+    margin-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.feature-icon {
+    margin-bottom: 25px;
+}
+
+.feature-circle {
+    width: 50px;
+    height: 50px;
+    background-color: $cardShadow;
+    position: relative;
+    border-radius: 50%;
+    bottom: 50px;
+    left: 120px;
+}
+
+.desc-relative-up {
+    position: relative;
+    bottom: 50px;
+}
+
+.lr-div, .rl-div {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.join-desc-image {
+    padding-left: 15px;
+    padding-right: 21px;
+}
+
+.image1 {
+    background-image: url('./media/whippets-racing2-min.jpg');
+    background-size: cover;
+    background-position: left;
+}
+
+.image2 {
+    background-image: url('./media/whippets-racing2-min.jpg');
+    background-size: cover;
+    background-position: right;
+
+}
+
+.join-desc-text {
+    padding-top: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.join-desc-description {
+    margin-top: 15px;
+}
+
+.more-button a {
+    padding: 10px 10px 10px 0px;
+    font-weight: 600;
+}
+
+.section-separator {
+    background-color: $offsetColor;
+    height: 50px;
+}
+
+.dog-single {
+    margin-bottom: 50px;
+}
+
+.dog-top {
+    margin-right: 6px;
+    margin-bottom: 15px;
+}
+
+.whippet2min {
+    background-image: url('./media/whippet2min.jpg');
+    background-size: 100% 100%;
+}
+
+.whippet3min {
+    background-image: url('./media/whippet3min.jpg');
+    background-size: 100% 100%;
+}
+
+.dog-name {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: $textColor;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+}
+
+.events-list-item {
+    padding-right: 6px;
+    padding-bottom: 25px; 
+    
+}
+
+.events-text {
+    margin: 10px 15px 0px 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.events-text-top {
+    margin-bottom: 10px;
+}
+
+.event-title {
+    margin-right: 25px;
+    margin-top: 10px;
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+.event-date-time {
+    margin-top: 5px;
+}
+
+
+
+
+// .background-image-overlay {
+//     position: absolute;
+//     width: 100%;
+//     height: 600px;
+//     z-index: 100;
+
+// }
+
+
+
+//MEDIA QUERIES
+
+@media screen and (max-width: 1200px) {
+    .bar-links {
+        display: none;
+    }
+}
