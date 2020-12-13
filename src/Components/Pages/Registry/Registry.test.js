@@ -1,7 +1,7 @@
 import React from "react";
-import Footer from "./Footer";
+import Registry from "./Registry";
 import { shallow } from "enzyme";
 
 it("renders without crashing", () => {
-  shallow(<Footer />);
+  shallow(<Registry />);
 });

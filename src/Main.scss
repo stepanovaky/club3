@@ -13,11 +13,14 @@ $cardBorder: rgb(32, 32, 255);
 $cardShadow: rgb(83, 83, 255, 0.2);
 $placeholderColor: rgb(235, 235, 235);
 $offsetColor:  rgb(144, 32, 255, 0.2);
+$notBlack: #181123;
+$inputShadow: rgb(231, 231, 228);
+$inputBorder: rgb(204, 201, 198);
 
 
 //UNIVERSAL
 
-h1, h2, h3, h4, h5, h6, input, p, a {
+h1, h2, h3, h4, h5, h6, input, p, a, select {
     font-family: Barlow, sans-serif;
     color: $textColor;
     font-size: 17px;
@@ -51,6 +54,12 @@ h5 {
 
 p {
     margin-bottom: 10px;
+}
+
+.footer-background {
+    background-color: #181123;
+    color: #aba5b4;
+    margin-top: 25px;
 }
 
 .w100per {
@@ -355,16 +364,29 @@ nav {
 }
 
 
+//REGISTRY
 
+.registration-form input, .registration-form select {
+    margin: 10px;
+    box-shadow: 6px 6px 3px $inputShadow;
+    border-radius: 4px;
+    background-color: transparent;
+    border: 2px solid $inputBorder;
+    font-size: 15px;
+    line-height: 18px;
+    padding: 9px 35px;
+}
 
-// .background-image-overlay {
-//     position: absolute;
-//     width: 100%;
-//     height: 600px;
-//     z-index: 100;
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
+// .registration-form input[type="submit"] {
+//     margin-left: auto;
+//     margin-right: auto;
 // }
-
 
 
 //MEDIA QUERIES
