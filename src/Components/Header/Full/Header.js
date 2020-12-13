@@ -23,8 +23,8 @@ function Header() {
             <Menu click={toggleVisibility} />
           </div>
         </nav>
-        <Dropdown click={toggleVisibility} visible={visible} />
       </div>
+      <Dropdown click={toggleVisibility} visible={visible} />
     </div>
   );
 }
