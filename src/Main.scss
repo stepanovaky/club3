@@ -375,12 +375,18 @@ nav {
     font-size: 15px;
     line-height: 18px;
     padding: 9px 35px;
+    outline: 1px solid white;
 }
 
 .registration-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.plus-icon {
+    position: relative;
+    top: 1px;
 }
 
 // .registration-form input[type="submit"] {
