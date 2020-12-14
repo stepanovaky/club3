@@ -6,7 +6,9 @@ function Bar() {
   const barLinks = pageLinks.map((l, index) => {
     return (
       <span key={index} className="bar-links">
-        <Link to={l.link}>{l.page}</Link>
+        <Link className="one-link" to={l.link}>
+          {l.page}
+        </Link>
       </span>
     );
   });

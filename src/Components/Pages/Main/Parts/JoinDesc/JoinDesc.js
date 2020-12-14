@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import whippet from "../../../../../media/whippets-racing-min.jpg";
+import whippet1 from "../../../../../media/whippets-from-box-min.jpg";
 
 function JoinDesc() {
   return (
@@ -7,9 +9,11 @@ function JoinDesc() {
       <div className="container">
         <div className="lr-div">
           <div className="join-desc-image">
-            <div className="frame">
+            <div className="frame join-dog-image ">
               <Link to="/join">
-                <div className="frame-image image1"></div>
+                <div className="frame-image fix-div-height-width1">
+                  <img className="image1" src={whippet} alt="racing whippets" />
+                </div>
               </Link>
             </div>
           </div>
@@ -35,9 +39,15 @@ function JoinDesc() {
         </div>
         <div className="rl-div">
           <div className="join-desc-image">
-            <div className="frame">
+            <div className="frame join-dog-image2">
               <Link to="/join">
-                <div className="frame-image image2"></div>
+                <div className="frame-image fix-div-height1">
+                  <img
+                    className="image2"
+                    src={whippet1}
+                    alt="racing whippets"
+                  />
+                </div>
               </Link>
             </div>
           </div>

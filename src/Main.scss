@@ -101,7 +101,7 @@ p {
 }
 
 .frame-image {
-    height: 280px;
+    // height: 280px;
     border-radius: 4px;
 }
 
@@ -187,6 +187,11 @@ nav {
 
 .right-bundle {
     display: flex;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
 }
 
 .logo-container {
@@ -316,17 +321,32 @@ background-position: center;
     padding-right: 21px;
 }
 
+
+
 .image1 {
-    background-image: url('./media/whippets-racing2-min.jpg');
-    background-size: cover;
-    background-position: left;
+    object-fit: cover;
 }
 
-.image2 {
-    background-image: url('./media/whippets-racing2-min.jpg');
-    background-size: cover;
-    background-position: right;
+div.frame.join-dog-image {
+    max-width: 716px;
+}
 
+div.frame.join-dog-image2 {
+    max-width: 726px;
+}
+
+.fix-div-height1 {
+    margin-bottom: -10px;
+}
+
+.fix-div-height-width1 {
+    margin-bottom: -10px;
+}
+
+.image1, .image2 {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 4px;
 }
 
 .join-desc-text {
@@ -358,16 +378,6 @@ background-position: center;
     margin-bottom: 15px;
 }
 
-.whippet2min {
-    background-image: url('./media/whippet2min.jpg');
-    background-size: 100% 100%;
-}
-
-.whippet3min {
-    background-image: url('./media/whippet3min.jpg');
-    background-size: 100% 100%;
-}
-
 .dog-name {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -375,6 +385,10 @@ background-position: center;
     font-size: 20px;
     line-height: 28px;
     font-weight: 600;
+}
+
+.events {
+    margin-top: 25px;
 }
 
 .events-list-item {
@@ -406,6 +420,31 @@ background-position: center;
 }
 
 
+
+.our-dog-image {
+    max-height: 50%;
+    max-width: 100%;
+    margin-bottom: -4px;
+    border-radius: 4px;
+    
+}
+
+.our-dog-div {
+    max-width: 515px;
+}
+
+.our-dog-frame {
+    max-width: 515px;
+}
+
+
+
+// .our-dog-frame {
+//     height: 385px;
+//     width: 300px;
+// }
+
+
 //REGISTRY
 
 .registration-form input, .registration-form select {
@@ -424,6 +463,10 @@ background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.registry {
+    margin-top: 25px;
 }
 
 .plus-icon {
@@ -446,6 +489,11 @@ background-position: center;
 .about-wrapper {
     margin-top: 40px;
 }
+.bar {
+    position: relative;
+    top: 15px;
+   
+}
 
 .about-title h2 {
     margin-bottom: 25px;
@@ -457,10 +505,48 @@ background-position: center;
     font-weight: 600;
 }
 
+//CALENDAR 
+
+.calendar {
+    margin-top: 25px;
+}
+
+.calendar-container {
+    max-width: 1200px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 //MEDIA QUERIES
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
     .bar-links {
         display: none;
     }
+}
+
+@media screen and (min-width: 1001px) {
+    .logo-container {
+        width: 225px;
+    }
+    .bar {
+        margin-right: 15px;
+    }
+    .bar-links {
+        width: 68px;
+        height: 68px;
+        padding: 25px 15px;
+        align-self: baseline;
+    }
+    .one-link {
+        font-size: 15px;
+        line-height: 18px;
+        font-weight: 600;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    
 }

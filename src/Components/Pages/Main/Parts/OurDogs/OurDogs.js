@@ -1,17 +1,19 @@
 import React from "react";
+import whippet1 from "../../../../../media/whippet2min.jpg";
+import whippet2 from "../../../../../media/whippet3min.jpg";
 
 function OurDogs() {
   const dogsHelpers = [
     {
-      img: "whippet2min",
+      img: whippet1,
       alt: "whippet",
-      dogName: "Name",
+      dogName: "Name1",
       desc: "Aute ipsum culpa aliqua non amet.",
     },
     {
-      img: "whippet3min",
+      img: whippet2,
       alt: "whippet",
-      dogName: "Name",
+      dogName: "Name2",
       desc: "Aute ipsum culpa aliqua non amet.",
     },
   ];
@@ -20,8 +22,10 @@ function OurDogs() {
     return (
       <div key={index} className="dog-single">
         <div className="dog-top">
-          <div className="frame">
-            <div className={`frame-image image3 ${dog.img}`}></div>
+          <div className="frame our-dog-frame">
+            <div className={`frame-image our-dog-div`}>
+              <img className="our-dog-image" src={dog.img} alt={dog.alt} />
+            </div>
           </div>
         </div>
         <div className="dog-title">

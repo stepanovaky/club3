@@ -1,15 +1,7 @@
 import React from "react";
+import dummyEvents from "../../../../helpers/dummy-events";
 
 function ClubEvents() {
-  const events = [
-    {
-      eventName: "Lorem",
-      eventTime: "7pm",
-      eventDate: "21 March",
-      eventDesc: "Aliquip Lorem officia culpa esse.",
-    },
-  ];
-
   //when server is built, there should be an API call
   //to the server to create the events list here
 
