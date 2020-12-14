@@ -1,11 +1,11 @@
 import React from "react";
-import dummyEvents from "../../../../helpers/dummy-events";
+import { dummyEvents } from "../../../../helpers/dummy-events";
 
 function ClubEvents() {
   //when server is built, there should be an API call
   //to the server to create the events list here
 
-  const listEvents = events.map((one, index) => {
+  const listEvents = dummyEvents.map((one, index) => {
     return (
       <div className="events-div">
         <div key={index} className="events-list-item">
