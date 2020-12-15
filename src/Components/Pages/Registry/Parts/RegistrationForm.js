@@ -9,7 +9,7 @@ function RegistrationForm() {
 
   return (
     <div className="registration-form">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="registration" onSubmit={handleSubmit(onSubmit)}>
         <div className="caption">
           <h2>Owner Information</h2>
         </div>
@@ -37,18 +37,7 @@ function RegistrationForm() {
           name="Mobile number"
           ref={register({ required: true, minLength: 6, maxLength: 12 })}
         />
-        <input
-          type="text"
-          placeholder="Registration ID"
-          name="Registration ID"
-          ref={register}
-        />
-        <input
-          type="text"
-          placeholder="Owner Code"
-          name="Owner Code"
-          ref={register}
-        />
+
         <div className="owner-address">
           <input
             type="text"
@@ -64,6 +53,12 @@ function RegistrationForm() {
               ref={register}
             />
           </div>
+          <input
+            type="number"
+            placeholder="Zip Code"
+            name="Zip Code"
+            ref={register}
+          />
           <input type="text" placeholder="City" name="City" ref={register} />
           <select name="State" ref={register}>
             <option value="AL">Alabama</option>
@@ -134,13 +129,6 @@ function RegistrationForm() {
 
         <input
           type="text"
-          placeholder="Club Sanction Number"
-          name="Club Sanction Number"
-          ref={register}
-        />
-
-        <input
-          type="text"
           placeholder="Call Name"
           name="Call Name"
           ref={register}
@@ -153,16 +141,21 @@ function RegistrationForm() {
         />
         <input
           type="text"
-          placeholder="Registration ID"
-          name="Registration ID"
+          placeholder="AKC Number"
+          name="AKC Number"
           ref={register}
         />
         <input type="text" placeholder="Breed" name="Breed" ref={register} />
         <input type="text" placeholder="DOB" name="DOB" ref={register} />
-        <select name="Gender" ref={register}>
-          <option value="Male">Male</option>
-          <option value=" Female"> Female</option>
-        </select>
+        <div>
+          <label>
+            Gender
+            <select name="Gender" ref={register}>
+              <option value="Male">Male</option>
+              <option value=" Female"> Female</option>
+            </select>
+          </label>
+        </div>
         <input
           type="text"
           placeholder="Microchip"
@@ -176,14 +169,17 @@ function RegistrationForm() {
           name="Expiration"
           ref={register}
         />
-        <input type="text" placeholder="Sire" name="Sire" ref={register} />
-        <input type="text" placeholder="Dam" name="Dam" ref={register} />
-        <select name="Registration Papers Attached" ref={register}>
-          <option value="AKC">AKC</option>
-          <option value="NGA">NGA</option>
-          <option value="AKC ILP">AKC ILP</option>
-          <option value=" Other"> Other</option>
-        </select>
+        <div>
+          <label>
+            Attach Registration Papers
+            <select name="Registration Papers Attached" ref={register}>
+              <option value="AKC">AKC</option>
+              <option value="NGA">NGA</option>
+              <option value="AKC ILP">AKC ILP</option>
+              <option value=" Other"> Other</option>
+            </select>
+          </label>
+        </div>
         <div className="caption">
           <h2>
             Add dog{" "}

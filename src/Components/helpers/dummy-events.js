@@ -1,3 +1,5 @@
+import pdf from "../../media/pdf/Christmas-Cup-program-2019.pdf";
+
 export const dummyEvents = [
   {
     name: "Lorem",
@@ -12,7 +14,7 @@ export const dummyEvents = [
     calendarPage: true,
     eventsPage: true,
     pdfPresent: true,
-    pdfFile: "",
+    pdfFile: { pdf },
     desc: "Minim qui cillum tempor ex qui esse velit.",
   },
   {
@@ -28,7 +30,7 @@ export const dummyEvents = [
     calendarPage: true,
     eventsPage: true,
     pdfPresent: true,
-    pdfFile: "",
+    pdfFile: { pdf },
     desc: "Minim qui cillum tempor ex qui esse velit.",
   },
   {
@@ -44,7 +46,7 @@ export const dummyEvents = [
     calendarPage: true,
     eventsPage: true,
     pdfPresent: true,
-    pdfFile: "",
+    pdfFile: { pdf },
     desc: "Minim qui cillum tempor ex qui esse velit.",
   },
   {
@@ -60,7 +62,7 @@ export const dummyEvents = [
     calendarPage: true,
     eventsPage: true,
     pdfPresent: true,
-    pdfFile: "",
+    pdfFile: pdf,
     desc: "Minim qui cillum tempor ex qui esse velit.",
   },
 ];

@@ -21,7 +21,7 @@ $navColor: #94b1ff;
 
 //UNIVERSAL
 
-h1, h2, h3, h4, h5, h6, input, p, a, select {
+h1, h2, h3, h4, h5, h6, input, p, a, select, label {
     font-family: Barlow, sans-serif;
     color: $textColor;
     font-size: 17px;
@@ -457,6 +457,13 @@ div.frame.join-dog-image2 {
     line-height: 18px;
     padding: 9px 35px;
     outline: 1px solid white;
+}
+
+.registration-form label {
+    margin: 10px;
+    font-size: 15px;
+    line-height: 18px;
+    padding: 9px;
 }
 
 .registration-form {

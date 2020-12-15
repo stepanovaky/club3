@@ -1,10 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import { Document, Page } from "react-pdf";
+import pdf from "../../../../../media/pdf/Christmas-Cup-program-2019.pdf";
 
 function ClubEvents(props) {
   //when server is built, there should be an API call
   //to the server to create the events list here
-  const { dummyEvents } = props;
+  const { dummyEvents, page } = props;
   console.log(dummyEvents);
+
+  const [open, setOpen] = useState(false);
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const toggleOpen = () => {
+    setOpen(!open);
+  };
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+
+  const displayPDF = (one, page) => {
+    if (page === "events" && one.pdfFile != null) {
+      return (
+        <div className="enlarge-image">
+          <div className="container">
+            <Document
+              file={{ data: pdf }}
+              onLoadSuccess={onDocumentLoadSuccess}
+              onLoadError={console.error}
+            >
+              <Page pageNumber={pageNumber} />
+            </Document>
+            <p>
+              Page {pageNumber} of {numPages}
+            </p>
+          </div>
+        </div>
+      );
+    }
+  };
 
   const displayEvent = (one, index) => {
     if (one.mainPage === true) {
@@ -23,6 +58,7 @@ function ClubEvents(props) {
                   </div>
                 </div>
               </div>
+              {displayPDF(one, page)}
             </div>
           </div>
         </div>
