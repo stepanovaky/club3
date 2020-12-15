@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 // import { usePdf } from "@mikecousins/react-pdf";
 // import { fromPath } from "pdf2pic";
 import { useForm } from "react-hook-form";
@@ -24,11 +24,11 @@ function ClubEvents(props) {
   //to the server to create the events list here
   const { dummyEvents, clubPage } = props;
 
+  const numPage = 1;
+
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
   const [open, setOpen] = useState(false);
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
 
   const toggleOpen = () => {
     setOpen(!open);
@@ -38,21 +38,14 @@ function ClubEvents(props) {
   const onSubmit = (data) => console.log(data);
   console.log(errors);
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
-
   const displayPDF = (one, clubPage) => {
     if (clubPage === "events" && one.pdfFile != null) {
       return (
         <div className="enlarge-image">
           <div className="container">
             <Zoom>
-              <Document
-                file={{ url: pdf }}
-                onLoadSuccess={onDocumentLoadSuccess}
-              >
-                <Page pageNumber={pageNumber} height={225} />
+              <Document file={{ url: pdf }}>
+                <Page pageNumber={numPage} height={225} />
               </Document>
             </Zoom>
             <div className="event-form-container">
