@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-function MyCalendar() {
+function MyCalendar(props) {
   const localizer = momentLocalizer(moment);
 
   const thing1 = new Date(2020, 11, 15, 15, 0, 0);

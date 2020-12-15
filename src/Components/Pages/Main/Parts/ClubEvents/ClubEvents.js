@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 function ClubEvents(props) {
   //when server is built, there should be an API call
