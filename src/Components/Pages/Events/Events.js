@@ -1,12 +1,10 @@
 import React from "react";
 import ClubEvents from "../Main/Parts/ClubEvents/ClubEvents";
 
-function Events() {
+function Events(props) {
   return (
     <div className="events">
-      <ClubEvents />
-      <ClubEvents />
-      <ClubEvents />
+      <ClubEvents dummyEvents={props.dummyEvents} />
     </div>
   );
 }

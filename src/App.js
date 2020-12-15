@@ -10,6 +10,7 @@ import NotFound from "./Components/Pages/NotFound/NotFound";
 import Footer from "./Components/Footer/Footer";
 //ADMIN PAGES
 import Admin from "./Components/Hidden/Admin";
+import { dummyEvents } from "./Components/helpers/dummy-events";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./Main.scss";
 
@@ -19,15 +20,27 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route exact path="/" component={Main} />
+          <Route
+            exact
+            path="/"
+            render={(props) => <Main {...props} dummyEvents={dummyEvents} />}
+          />
           <Route path="/about" component={About} />
           <Route path="/register" component={Registry} />
-          <Route path="/events" component={Events} />
-          <Route path="/calendar" component={Calendar} />
+          <Route
+            path="/events"
+            render={(props) => <Events {...props} dummyEvents={dummyEvents} />}
+          />
+          <Route
+            path="/calendar"
+            render={(props) => (
+              <Calendar {...props} dummyEvents={dummyEvents} />
+            )}
+          />
           <Route path="/merchandise" component={Merchandise} />
           <Route
             path="/2946fec9-4210-4aea-a828-fa315bad9a43"
-            component={Admin}
+            render={(props) => <Admin {...props} dummyEvents={dummyEvents} />}
           />
           <Route component={NotFound} />
         </Switch>

@@ -1,24 +1,16 @@
-import React from "react";
-import { dummyEvents } from "../../../../helpers/dummy-events";
-import moment from "moment";
+import React, { useEffect } from "react";
 
-function ClubEvents() {
+function ClubEvents(props) {
   //when server is built, there should be an API call
   //to the server to create the events list here
-
-  const formattedDate = (date) => {
-    moment(date).format("MMMM Do ddd");
-  };
-
-  const formattedTime = (time) => {
-    moment(time).format("h:mA");
-  };
+  const { dummyEvents } = props;
+  console.log(dummyEvents);
 
   const displayEvent = (one, index) => {
     if (one.mainPage === true) {
       return (
-        <div className="events-div">
-          <div key={index} className="events-list-item">
+        <div key={index} className="events-div">
+          <div className="events-list-item">
             <div className="frame">
               <div className="events-frame-content">
                 <div className="events-text">
