@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import pdf from "../../../../media/pdf/Christmas-Cup-program-2019.pdf";
-import { pdfjs } from "react-pdf";
 
 function EnlargeImage(props) {
   const { pdf } = props;
