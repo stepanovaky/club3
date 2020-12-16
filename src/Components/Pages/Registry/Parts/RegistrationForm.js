@@ -4,7 +4,7 @@ import { FiPlusCircle } from "react-icons/fi";
 
 function RegistrationForm() {
   const [ownerCounter, setOwnerCounter] = useState(0);
-  const [dogCounter, setDogCounter] = useState(0);
+  // const [dogCounter, setDogCounter] = useState(0);
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => console.log(data);
   console.log(errors);
