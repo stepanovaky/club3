@@ -10,7 +10,7 @@ function About() {
               <h2>About Us</h2>
             </div>
             <div className="about-content">
-              <p>
+              <p className="about-paragraph p1">
                 The Central Florida Sighthound Racing Club was formed in 2015 by
                 Ron and Cheryl Bigford. Pat Moran was the first President. Ron
                 wanted an additional format for his whippets to run and perform
@@ -20,7 +20,7 @@ function About() {
                 later. The Club raced at the Sanctuary for the first couple of
                 years and later hosted events at the Florida Horse Park.
               </p>
-              <p>
+              <p className="about-paragraph p2">
                 The NOTRA (National Oval Track Racing Association) format was
                 added with the new venue. In 2018 two sand tracks were built at
                 the FHP for racing on sand. Sand is considered the best surface

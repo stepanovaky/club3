@@ -30,7 +30,7 @@ function Features() {
             <h2>Welcome to our Club</h2>
           </div>
         </div>
-        {renderFeatures}
+        <div className="feature-wrapper">{renderFeatures}</div>
       </div>
     </div>
   );

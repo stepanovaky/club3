@@ -34,6 +34,11 @@ function ClubEvents(props) {
     setOpen(!open);
   };
 
+  const path = window.location.pathname;
+  console.log(path);
+
+  const pathClass = path === "/" ? "main-layout" : "events-layout";
+
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => console.log(data);
   console.log(errors);
@@ -85,9 +90,9 @@ function ClubEvents(props) {
         <div key={index} className="events-div">
           <div className="events-list-item">
             <div className="frame">
-              <div className="events-frame-content">
-                <div className="events-text">
-                  <div className="events-text-top">
+              <div className={`events-frame-content `}>
+                <div className={`events-text `}>
+                  <div className={`events-text-top ${pathClass}`}>
                     <h2 className="event-title">{one.name}</h2>
                     <h5 className="event-date-time">
                       {one.date}, {one.locationRollCallAndInspection}

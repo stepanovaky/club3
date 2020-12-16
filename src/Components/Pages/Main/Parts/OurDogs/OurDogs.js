@@ -23,7 +23,7 @@ function OurDogs() {
       <div key={index} className="dog-single">
         <div className="dog-top">
           <div className="frame our-dog-frame">
-            <div className={`frame-image our-dog-div`}>
+            <div className={`frame-image l${index} our-dog-div`}>
               <img className="our-dog-image" src={dog.img} alt={dog.alt} />
             </div>
           </div>

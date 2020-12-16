@@ -1,17 +1,41 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { pageLinks } from "../helpers/lists-helpers";
+import { FaFacebook } from "react-icons/fa";
 
 function Footer() {
+  const linksList = pageLinks.map((link, index) => {
+    return (
+      <li key={index} className="footer-links">
+        <Link to={link.link}>{link.page}</Link>
+      </li>
+    );
+  });
+
   return (
     <div className="footer">
       <div className="footer-background">
         <div className="container">
           <div className="footer-top">
-            <div className="footer-left">navigation - list all</div>
-            margin in between, border top, navigation and connect position
-            relative above border
-            <div className="footer-right">Contact - email for questions?</div>
+            <div className="footer-left">
+              {" "}
+              <h5 id="footer-navigation">Navigation</h5>
+              <ul>{linksList}</ul>
+            </div>
+            <div className="footer-right">
+              <h6 id="footer-icon">
+                Come hang out
+                <br /> with us on
+                <br /> facebook!
+                <br />
+                <Link to="">
+                  {" "}
+                  <FaFacebook id="footer-navigation" size="2em" />{" "}
+                </Link>
+              </h6>
+            </div>
           </div>
-          <div className="footer-bottom">facebook link</div>
+          <div className="footer-bottom"></div>
         </div>
       </div>
     </div>
