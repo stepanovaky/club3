@@ -6,7 +6,7 @@ function Registry() {
     <div className="registry">
       <div className="container">
         <div>
-          <div className="frame">
+          <div className="frame registration-frame">
             <RegistrationForm />
           </div>
         </div>

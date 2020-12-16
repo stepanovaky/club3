@@ -56,6 +56,7 @@ function ClubEvents(props) {
             <div className="event-form-container">
               <div className="event-form-button">
                 <input
+                  className="register-button"
                   type="button"
                   onClick={toggleOpen}
                   value={open === true ? "Hide Form" : "Register For Event"}
@@ -68,13 +69,15 @@ function ClubEvents(props) {
               >
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <input
+                    className="register-form"
                     type="text"
                     placeholder="Dog Sanction Number"
                     name="Dog Sanction Number"
                     ref={register}
                   />
+                  <br />
 
-                  <input type="submit" />
+                  <input className="register-submit" type="submit" />
                 </form>
               </div>
             </div>
@@ -89,20 +92,19 @@ function ClubEvents(props) {
       return (
         <div key={index} className="events-div">
           <div className="events-list-item">
-            <div className="frame">
+            <div className="frame events-frame">
               <div className={`events-frame-content `}>
                 <div className={`events-text `}>
                   <div className={`events-text-top ${pathClass}`}>
                     <h2 className="event-title">{one.name}</h2>
                     <h5 className="event-date-time">
-                      {one.date}, {one.locationRollCallAndInspection}
+                      {one.date}, <br /> {one.locationRollCallAndInspection}
                     </h5>
                     <p>{one.desc}</p>
                   </div>
                 </div>
               </div>
-
-              {displayPDF(one, clubPage)}
+              <div className="pdf-div">{displayPDF(one, clubPage)}</div>
             </div>
           </div>
         </div>

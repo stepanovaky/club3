@@ -557,6 +557,33 @@ div.frame.join-dog-image2 {
     top: 1px;
 }
 
+.registration-frame {
+    max-width: 510px;
+}
+
+.register-button {
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 200px;
+
+
+}
+.enlarge-image {
+    width: 300px;
+}
+.register-form {
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 192px;
+}
+.register-submit {
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 200px;
+}
+
+
+
 // .registration-form input[type="submit"] {
 //     margin-left: auto;
 //     margin-right: auto;
@@ -607,6 +634,13 @@ div.frame.join-dog-image2 {
     text-align: center;
 }
 
+//NOT FOUND
+
+.not-found-content {
+    text-align: center;
+    padding-top: 40px;
+}
+
 
 
 //MEDIA QUERIES
@@ -646,6 +680,14 @@ div.frame.join-dog-image2 {
     }
 }
 
+@media screen and (min-width: 400px) {
+    .events {
+        max-width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 @media screen and (min-width: 500px) {
     .main-layout {
         display: flex;
@@ -660,6 +702,17 @@ div.frame.join-dog-image2 {
     }
     .main-layout p {
         padding: 10px;
+    }
+
+    .events {
+        max-width: 380px;
+    }
+}
+
+@media screen and (min-width: 560px) {
+    .registration-frame {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -681,6 +734,56 @@ div.frame.join-dog-image2 {
     .l0 img {
         // height: 100%
         transform: scaleY(1.04)
+    }
+
+    .events {
+        max-width: 1000px;
+    }
+
+    .events-text-top {
+        display: flex;
+        align-items: baseline;
+    }
+    .events-text-top h2 {
+        padding-right: 10px;
+    }
+
+    .events-text-top h5 {
+        padding-right: 10px;
+    }
+    .events-text-top p {
+    }
+    .pdf-div {
+        margin-right: auto;
+        margin-left: auto;
+        width: 300px;
+    }
+    .register-button {
+        margin-left: 50px;
+        margin-right: 50px;
+        width: 200px;
+
+
+    }
+    .enlarge-image {
+        width: 300px;
+    }
+    .register-form {
+        margin-left: 50px;
+        margin-right: 50px;
+        width: 192px;
+    }
+    .register-submit {
+        margin-left: 50px;
+        margin-right: 50px;
+        width: 200px;
+    }
+
+}
+
+@media screen and (min-width: 700px) {
+    .events-text-top {
+        justify-content: space-evenly;
     }
 }
     
@@ -704,8 +807,11 @@ div.frame.join-dog-image2 {
         transform: scaleY(1.04)
     }
 
-    .about-content {
-        display: flex;
+    .about-wrapper {
+        max-width: 51em;
+        margin-left: auto;
+        margin-right: auto;
+        
     }
 
     .about-paragraph {
@@ -719,6 +825,10 @@ div.frame.join-dog-image2 {
     
 }
 
+//NOT FOUND
+
+
+
 @media screen and (min-width: 800px) {
     .lr-div, .rl-div {
         display: flex;
@@ -731,6 +841,15 @@ div.frame.join-dog-image2 {
         padding-top: 10px;
     }
 
+}
+
+@media screen and (min-width: 900px) {
+    .events-frame {
+        display: flex;
+    }
+    .events-text-top {
+        flex-direction: column;
+    }
 }
 
 @media screen and (min-width: 1000px){
