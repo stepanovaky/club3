@@ -40,5 +40,33 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyAmX7NztIP6rSPxyI4MQZuucgyjw3poQWY",
+    authDomain: "cfs-racing-club.firebaseapp.com",
+    databaseURL: "https://cfs-racing-club-default-rtdb.firebaseio.com",
+    projectId: "cfs-racing-club",
+    storageBucket: "cfs-racing-club.appspot.com",
+    messagingSenderId: "398840133886",
+    appId: "1:398840133886:web:252f27385dba8acfe8cdaf",
+    measurementId: "G-L938VST90Z"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script src="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.7.1/firebase-ui-auth.css" />
+
   </body>
 </html>

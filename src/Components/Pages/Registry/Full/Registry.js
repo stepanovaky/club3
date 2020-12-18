@@ -1,4 +1,5 @@
 import React from "react";
+// import PlaygroundRegistration from "../Parts/PlaygroundRegistration";
 import RegistrationForm from "../Parts/RegistrationForm";
 
 function Registry() {

@@ -564,6 +564,14 @@ div.frame.join-dog-image2 {
     cursor: pointer;
 }
 
+.caption-add-or-remove {
+    color: purple!important;
+}
+
+.hide-minus {
+    display: none;
+}
+
 .registration-frame {
     max-width: 510px;
 }
@@ -758,8 +766,7 @@ div.frame.join-dog-image2 {
     .events-text-top h5 {
         padding-right: 10px;
     }
-    .events-text-top p {
-    }
+    
     .pdf-div {
         margin-right: auto;
         margin-left: auto;
@@ -854,9 +861,17 @@ div.frame.join-dog-image2 {
     .events-frame {
         display: flex;
     }
-    .events-text-top {
+    .events-layout {
         flex-direction: column;
     }
+
+    .main-layout {
+        flex-direction: row!important;
+        justify-content: space-evenly!important;
+        width: 100%;
+
+    }
+
 }
 
 @media screen and (min-width: 1000px){
@@ -874,5 +889,9 @@ div.frame.join-dog-image2 {
     }
 
 @media screen and (max-width: 1200px) {
-    
+    .root {
+        max-width: 1180px;
+        margin-right: auto;
+        margin-left: auto;
+    }
 }

@@ -1,10 +1,11 @@
 import React from "react";
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm, useFieldArray, Controller, useWatch } from "react-hook-form";
+import ReactDOM from "react-dom";
 
 let renderCount = 0;
 
 function PlaygroundRegistration() {
-  const { register, control, handleSubmit } = useForm({
+  const { register, control, handleSubmit, reset, watch } = useForm({
     defaultValues: {
       test: [{ firstName: "Bill", lastName: "Luo" }],
     },
@@ -16,10 +17,6 @@ function PlaygroundRegistration() {
   const dogSection = useFieldArray({
     control,
     name: "dog",
-  });
-  const dogOwnerSection = useFieldArray({
-    control,
-    name: "dogOwner",
   });
 
   const onSubmit = (data) => console.log("data", data);
@@ -46,11 +43,11 @@ function PlaygroundRegistration() {
       <ul>
         {ownerSection.fields.map((item, index) => {
           return (
-            <li key={item.index}>
+            <li key={item.id}>
               <div className={`owner${index}`}>
                 <div className={`caption`}>
                   <h2>
-                    {/* Remove owner{" "} */}
+                    Remove owner{" "}
                     {/* <span onClick={removeOwner} className="minus-circle">
                       <HiOutlineMinusCircle />
                     </span> */}
@@ -191,27 +188,29 @@ function PlaygroundRegistration() {
         <button
           type="button"
           onClick={() => {
-            ownerSection.append();
+            ownerSection.append({
+              firstName: "appendBill",
+              lastName: "appendLuo",
+            });
           }}
         >
-          Add Owner
+          append
         </button>
       </section>
       <ul>
         {dogSection.fields.map((item, index) => {
           return (
-            <li key={item.index}>
+            <li key={item.id}>
               <div className={`dog${index}`}>
                 <div className={`caption`}>
                   <h2>
-                    {/* Remove dog{" "} */}
+                    Remove dog{" "}
                     {/* <span onClick={removeDog} className="minus-circle">
                       <HiOutlineMinusCircle />
                     </span> */}
                   </h2>
                 </div>
-
-                <inputbfgxikuiu
+                <input
                   type="text"
                   placeholder="Owner's first name"
                   name={`dog[${index}].ownerFirstName`}
@@ -223,13 +222,6 @@ function PlaygroundRegistration() {
                   name={`dog[${index}].ownerLastName`}
                   ref={register({ required: true, maxLength: 100 })}
                 />
-                <input
-                  type="text"
-                  placeholder="Owner's Email"
-                  name={`dog[${index}].dogOwnerEmail`}
-                  ref={register({ required: true, pattern: /^\S+@\S+$/i })}
-                />
-
                 <input
                   type="text"
                   placeholder="Registration name"
@@ -301,7 +293,7 @@ function PlaygroundRegistration() {
             dogSection.append();
           }}
         >
-          Add Dog
+          append
         </button>
       </section>
 
