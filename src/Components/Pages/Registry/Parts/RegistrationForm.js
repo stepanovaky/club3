@@ -27,15 +27,12 @@ function PlaygroundRegistration() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      ks
       <ul>
         {ownerSection.fields.map((item, index) => {
           return (
             <li key={item.index}>
               <div className={`owner${index}`}>
-                <div className={`caption`}>
-                  <h2></h2>
-                </div>
+                <div className={`caption`}></div>
                 <input
                   type="text"
                   placeholder="First name"
@@ -182,9 +179,7 @@ function PlaygroundRegistration() {
           return (
             <li key={item.index}>
               <div className={`dog${index}`}>
-                <div className={`caption`}>
-                  <h2></h2>
-                </div>
+                <div className={`caption`}></div>
 
                 <inputbfgxikuiu
                   type="text"
@@ -235,7 +230,7 @@ function PlaygroundRegistration() {
                   name={`dog[${index}].dob`}
                   ref={register({
                     required: true,
-                    pattern: /^(0?[1-9]|1[0-2])[](0?[1-9]|[12]\d|3[01])[](19|20)\d{2}$/,
+                    pattern: /^(0?[1-9]|1[0-2])[/](0?[1-9]|[12]\d|3[01])[?](19|20)\d{2}$/,
                   })}
                 />
                 <input
