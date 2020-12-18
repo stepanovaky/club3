@@ -1,8 +1,6 @@
 import React from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 
-let renderCount = 0;
-
 function PlaygroundRegistration() {
   const { register, control, handleSubmit } = useForm({
     defaultValues: {
@@ -17,10 +15,6 @@ function PlaygroundRegistration() {
     control,
     name: "dog",
   });
-  const dogOwnerSection = useFieldArray({
-    control,
-    name: "dogOwner",
-  });
 
   const onSubmit = (data) => console.log("data", data);
 
@@ -30,31 +24,17 @@ function PlaygroundRegistration() {
 
   // The following is useWatch example
   // console.log(useWatch({ name: "test", control }));
-  let ownerCount = 0;
-  ownerCount++;
-  let dogCount = 0;
-  dogCount++;
-  const removeDog = 0;
-  const removeOwner = 0;
-  renderCount++;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Field Array </h1>
-      <p>The following demo allow you to delete, append, prepend items</p>
-      <span className="counter">Render Count: {renderCount}</span>
+      ks
       <ul>
         {ownerSection.fields.map((item, index) => {
           return (
             <li key={item.index}>
               <div className={`owner${index}`}>
                 <div className={`caption`}>
-                  <h2>
-                    {/* Remove owner{" "} */}
-                    {/* <span onClick={removeOwner} className="minus-circle">
-                      <HiOutlineMinusCircle />
-                    </span> */}
-                  </h2>
+                  <h2></h2>
                 </div>
                 <input
                   type="text"
@@ -203,12 +183,7 @@ function PlaygroundRegistration() {
             <li key={item.index}>
               <div className={`dog${index}`}>
                 <div className={`caption`}>
-                  <h2>
-                    {/* Remove dog{" "} */}
-                    {/* <span onClick={removeDog} className="minus-circle">
-                      <HiOutlineMinusCircle />
-                    </span> */}
-                  </h2>
+                  <h2></h2>
                 </div>
 
                 <inputbfgxikuiu
@@ -260,7 +235,7 @@ function PlaygroundRegistration() {
                   name={`dog[${index}].dob`}
                   ref={register({
                     required: true,
-                    pattern: /^(0?[1-9]|1[0-2])[\/](0?[1-9]|[12]\d|3[01])[\/](19|20)\d{2}$/,
+                    pattern: /^(0?[1-9]|1[0-2])[](0?[1-9]|[12]\d|3[01])[](19|20)\d{2}$/,
                   })}
                 />
                 <input
@@ -304,7 +279,6 @@ function PlaygroundRegistration() {
           Add Dog
         </button>
       </section>
-
       <input type="submit" />
     </form>
   );
