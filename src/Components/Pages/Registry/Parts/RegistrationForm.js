@@ -1,55 +1,47 @@
 import React from "react";
-import { Formik, Form, Field, FieldArray, FormikConsumer } from "formik";
+import FieldArrayOwnerForm from "./FieldArrayOwnerForm";
+import FieldArrayDogForm from "./FieldArrayDogForm";
+import { useForm } from "react-hook-form";
+import NestedRegistrationForm from "./NestedRegistrationForm";
 
-// Here is an example of a form with an editable list.
-// Next to each input are buttons for insert and remove.
-// If the list is empty, there is a button to add an item.
+function RegistrationForm() {
+  const {
+    control,
+    register,
+    handleSubmit,
+    getValues,
+    errors,
+    reset,
+    setValue,
+  } = useForm();
+  const onSubmit = (data) => console.log("data", data);
 
-const RegistrationForm = () => {
-  <div>
-    <Formik
-      initialValues={{ owners: [""] }}
-      onSubmit={(values) => console.log(values)}
-    >
-      render=
-      {({ values }) => (
-        <Form>
-          <FieldArray
-            name="owners"
-            render={(arrayHelpers) => (
-              <div>
-                {values.owners &&
-                  values.owners.length >
-                    0(
-                      values.owners.map((owner, index) => (
-                        <div key={index}>
-                          <Field name={`owners.${index}`} />
-                          <button
-                            type="button"
-                            onClick={() => arrayHelpers.remove(index)}
-                          >
-                            -
-                          </button>
-                        </div>
-                      ))
-                    )(
-                      <button
-                        type="button"
-                        onClick={() => arrayHelpers.push("")}
-                      >
-                        add
-                      </button>
-                    )}
-                <div>
-                  <button type="submit">Submit</button>
-                </div>
-              </div>
-            )}
+  return (
+    <div className="register-form">
+      <NestedRegistrationForm />
+      {/* <div className="container">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h1>Register Owners and Dogs</h1>
+          <FieldArrayOwnerForm
+            {...{
+              control,
+              register,
+              getValues,
+              setValue,
+              errors,
+            }}
           />
-        </Form>
-      )}
-    </Formik>
-  </div>;
-};
+          <FieldArrayDogForm
+            {...{ control, register, getValues, setValue, errors }}
+          />
+        </form>
+        <button type="button" onClick={() => reset()}>
+          Reset
+        </button>
+        <input type="submit" />
+      </div> */}
+    </div>
+  );
+}
 
 export default RegistrationForm;
