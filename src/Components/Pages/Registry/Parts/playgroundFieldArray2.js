@@ -3,10 +3,8 @@ import { useFieldArray } from "react-hook-form";
 import NestedArray from "./playgroundNestedFieldArray";
 import { useDropzone } from "react-dropzone";
 
-let renderCount = 0;
-
 export default function Fields({ control, register, setValue, getValues }) {
-  const { fields, append, remove, prepend } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     control,
     name: "dogs",
   });
@@ -16,7 +14,6 @@ export default function Fields({ control, register, setValue, getValues }) {
     // Do something with the files
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-  const { ref, ...rootProps } = getRootProps();
 
   return (
     <>

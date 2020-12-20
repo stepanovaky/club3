@@ -1,12 +1,11 @@
 import React from "react";
-import { apiUrl } from "../../../helpers/backend";
+// import { apiUrl } from "../../../helpers/backend";
 import { useForm } from "react-hook-form";
 import FieldArray from "./playgroundFieldArray";
 import FieldArray2 from "./playgroundFieldArray2";
 import { db } from "../../../../firebase";
 import { v4 as uuidv4 } from "uuid";
 import addYears from "date-fns/addYears";
-import NestedDogOwnerArray from "./NestedDogOwnerArray";
 
 const defaultValues = {
   test: [
@@ -86,7 +85,8 @@ function NestedRegistrationForm() {
     });
 
     primaryOwners.map((owner) => {
-      db.collection("owners")
+      return db
+        .collection("owners")
         .doc(`${owner.email}`)
         .get()
         .then(function (doc) {
@@ -118,7 +118,8 @@ function NestedRegistrationForm() {
       return { ...dog, ownerIds: primaryOwnerIds };
     });
     allDogsWithPrimaryOwnerIds.map((dog) => {
-      db.collection("dogs")
+      return db
+        .collection("dogs")
         .doc(`${dog.akcNumber}`)
         .get()
         .then(function (doc) {
@@ -142,13 +143,13 @@ function NestedRegistrationForm() {
         });
     });
 
-    if (data.dogOwner != undefined) {
+    if (data.dogOwner !== undefined) {
       const secondary = {
         ...data.dogOwner.map((owner) => owner.secondary),
       };
       for (let i = 0; i < allDogsWithPrimaryOwnerIds.length; i++) {
-        if (secondary[i] != undefined) {
-          secondary[i].map((owner) => {
+        if (secondary[i] !== undefined) {
+          return secondary[i].map((owner) => {
             console.log(owner);
             const id = uuidv4();
             allDogsWithPrimaryOwnerIds[i].ownerIds.push(id);

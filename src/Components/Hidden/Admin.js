@@ -4,7 +4,7 @@ import { db } from "../../firebase";
 
 function Admin() {
   const { register, handleSubmit, errors } = useForm();
-  const [answer, setAnswer] = useState();
+  // const [answer, setAnswer] = useState();
   const onSubmit = (data) => {
     console.log(data);
     const dogOwnerRef = db.collection("ownersAndDogs");
