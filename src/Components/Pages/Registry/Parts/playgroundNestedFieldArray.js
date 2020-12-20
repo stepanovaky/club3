@@ -11,24 +11,24 @@ export default ({ nestIndex, control, register }) => {
     <div>
       {fields.map((item, k) => {
         return (
-          <div key={item.id}>
-            <label>Secondary dog owners</label>
+          <div key={item.id} style={{ marginLeft: 20 }}>
+            <label>Nested Array:</label>
             <input
               type="text"
               placeholder="First name"
-              name={`dogOwner[${nestIndex}].nestedArray[${k}].ownerFirstName`}
+              name={`dogOwner[${nestIndex}].secondary[${k}].firstName`}
               ref={register({ required: true, maxLength: 80 })}
             />
             <input
               type="text"
               placeholder="Last name"
-              name={`dogOwner[${nestIndex}].nestedArray[${k}].ownerLastName`}
+              name={`dogOwner[${nestIndex}].secondary[${k}].lastName`}
               ref={register({ required: true, maxLength: 100 })}
             />
             <input
               type="text"
               placeholder="Email"
-              name={`dogOwner[${nestIndex}].nestedArray[${k}].ownerEmail`}
+              name={`dogOwner[${nestIndex}].secondary[${k}].email`}
               ref={register({ required: true, pattern: /^\S+@\S+$/i })}
             />
             <button type="button" onClick={() => remove(k)}>
@@ -47,7 +47,7 @@ export default ({ nestIndex, control, register }) => {
           })
         }
       >
-        Add Secondary Dog Owners
+        Add Secondary
       </button>
 
       <hr />

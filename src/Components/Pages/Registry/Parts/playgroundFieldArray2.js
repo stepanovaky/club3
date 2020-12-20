@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useFieldArray } from "react-hook-form";
 import NestedArray from "./playgroundNestedFieldArray";
+import { useDropzone } from "react-dropzone";
 
 let renderCount = 0;
 
@@ -9,6 +10,13 @@ export default function Fields({ control, register, setValue, getValues }) {
     control,
     name: "dogs",
   });
+
+  const onDrop = useCallback((acceptedFiles) => {
+    console.log(acceptedFiles, fields);
+    // Do something with the files
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { ref, ...rootProps } = getRootProps();
 
   return (
     <>
@@ -31,12 +39,18 @@ export default function Fields({ control, register, setValue, getValues }) {
               />
               <input
                 type="text"
+                placeholder="AKC number"
+                name={`dogs[${index}].akcNumber`}
+                ref={register}
+              />
+              <input
+                type="text"
                 placeholder="Breed"
                 name={`dogs[${index}].breed`}
                 ref={register}
               />
               <input
-                type="text"
+                type="date"
                 placeholder="DOB"
                 name={`dogs[${index}].dob`}
                 ref={register}
@@ -55,6 +69,23 @@ export default function Fields({ control, register, setValue, getValues }) {
               <button type="button" onClick={() => remove(index)}>
                 Delete
               </button>
+              <div className="frame">
+                <h5>Please include dog's Registered Name in file name</h5>
+                <div
+                  {...getRootProps({
+                    refKey: getValues("dogs"),
+                  })}
+                >
+                  <input {...getInputProps()} />
+                  {isDragActive ? (
+                    <p>Drop the files here ...</p>
+                  ) : (
+                    <p>
+                      Drag 'n' drop some files here, or click to select files
+                    </p>
+                  )}
+                </div>
+              </div>
             </li>
           );
         })}
