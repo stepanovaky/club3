@@ -38,15 +38,7 @@ export default ({ nestIndex, control, register }) => {
         );
       })}
 
-      <button
-        type="button"
-        onClick={() =>
-          append({
-            field1: "field1",
-            field2: "field2",
-          })
-        }
-      >
+      <button type="button" onClick={() => append()}>
         Add Secondary Owner
       </button>
 

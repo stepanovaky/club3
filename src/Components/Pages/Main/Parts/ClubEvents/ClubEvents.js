@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-// import { usePdf } from "@mikecousins/react-pdf";
-// import { fromPath } from "pdf2pic";
 import { useForm } from "react-hook-form";
-
-import { pdfjs } from "react-pdf";
-import Zoom from "react-medium-image-zoom";
-import "react-medium-image-zoom/dist/styles.css";
-
-import { Document, Page } from "react-pdf";
+import { Link } from "react-router-dom";
+// import { usePdf } from "@mikecousins/react-pdf";
+import { Document, Page, pdfjs } from "react-pdf";
 import pdf from "../../../../../media/pdf/Christmas-Cup-program-2019.pdf";
+import { Button, Icon, Modal } from "semantic-ui-react";
 
 // import PdfViewer from "../../../Events/Parts/PdfViewer";
 // import PDJFSBackend from "../../../Events/Parts/pdfjs";
@@ -20,18 +16,38 @@ import pdf from "../../../../../media/pdf/Christmas-Cup-program-2019.pdf";
 // import PdfViewer from "../../../Events/Parts/PdfViewer";
 
 function ClubEvents(props) {
+  function exampleReducer(state, action) {
+    switch (action.type) {
+      case "close":
+        return { open: false };
+      case "open":
+        return { open: true, size: action.size };
+      default:
+        throw new Error("Unsupported action...");
+    }
+  }
+
+  const [state, dispatch] = React.useReducer(exampleReducer, {
+    open: false,
+    size: undefined,
+  });
+  const { open, size } = state;
   //when server is built, there should be an API call
   //to the server to create the events list here
   const { dummyEvents, clubPage } = props;
-
-  const numPage = 1;
-
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-  const [open, setOpen] = useState(false);
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+
+  const [openEvent, setOpenEvent] = useState(false);
 
   const toggleOpen = () => {
-    setOpen(!open);
+    setOpenEvent(!openEvent);
   };
 
   const path = window.location.pathname;
@@ -48,11 +64,21 @@ function ClubEvents(props) {
       return (
         <div className="enlarge-image">
           <div className="container">
-            <Zoom>
-              <Document file={{ url: pdf }}>
-                <Page pageNumber={numPage} height={225} />
+            <div onClick={() => dispatch({ type: "open", size: "fullscreen" })}>
+              <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
+                <Page pageNumber={pageNumber} width="200" height="100" />
               </Document>
-            </Zoom>
+
+              <Link id="pdf-download" to={pdf} target="_blank" download>
+                Download PDF
+              </Link>
+            </div>
+            <input
+              className="view-pdf-fullscreen-button"
+              type="button"
+              value="View PDF Fullsize"
+              onClick={() => dispatch({ type: "open", size: "fullscreen" })}
+            />
             <div className="event-form-container">
               <div className="event-form-button">
                 <input
@@ -64,7 +90,7 @@ function ClubEvents(props) {
               </div>
               <div
                 className={`event-form-registration ${
-                  open === true ? "show-form" : "hide-form"
+                  openEvent === true ? "show-form" : "hide-form"
                 }`}
               >
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -81,6 +107,30 @@ function ClubEvents(props) {
                 </form>
               </div>
             </div>
+          </div>
+          <div>
+            <Modal
+              size={size}
+              open={open}
+              onClose={() => dispatch({ type: "close" })}
+            >
+              <Modal.Header>PDF</Modal.Header>
+              <Modal.Content>
+                <div>
+                  <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
+                    <Page pageNumber={pageNumber} width="1775" height="1800" />
+                  </Document>
+                  <p>
+                    Page {pageNumber} of {numPages}
+                  </p>
+                </div>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button negative onClick={() => dispatch({ type: "close" })}>
+                  Close
+                </Button>
+              </Modal.Actions>
+            </Modal>
           </div>
         </div>
       );

@@ -21,6 +21,7 @@ export const pageLinks = [
   { page: "Registration", link: "/register" },
   { page: "Events", link: "/events" },
   { page: "Calendar", link: "/calendar" },
+  { page: "Results", link: "/results" },
   { page: "Merchandise", link: "/merchandise" },
 ];
 

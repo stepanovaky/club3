@@ -16,8 +16,10 @@
     "firebase": "^8.2.1",
     "formik": "^2.2.6",
     "moment": "^2.29.1",
+    "pdf-viewer-reactjs": "^2.1.2",
     "pdf2pic": "^2.1.2",
-    "react": "^17.0.1",
+    "precise-ui": "^1.5.1",
+    "react": "^16.14.0",
     "react-big-calendar": "^0.30.0",
     "react-big-scheduler": "^0.2.7",
     "react-calendar": "^3.2.1",
@@ -28,9 +30,13 @@
     "react-hook-form": "^6.13.0",
     "react-icons": "^4.1.0",
     "react-medium-image-zoom": "^4.3.1",
+    "react-modal": "^3.12.1",
     "react-pdf": "^5.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.1",
+    "styled-components": "^2.4.1",
     "tui-calendar": "^1.12.14",
     "uuid": "^8.3.2",
     "web-vitals": "^0.2.4"
@@ -62,6 +68,8 @@
   "devDependencies": {
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
+    "gulp": "^4.0.2",
+    "react-view-pdf": "^0.1.2",
     "sass": "^1.30.0"
   }
 }

@@ -5,6 +5,7 @@ import About from "./Components/Pages/About/About";
 import Registry from "./Components/Pages/Registry/Full/Registry";
 import Events from "./Components/Pages/Events/Events";
 import Calendar from "./Components/Pages/Calendar/Calendar";
+import Results from "./Components/Pages/Results/Results";
 import Merchandise from "./Components/Pages/Merchandise/Merchandise";
 import NotFound from "./Components/Pages/NotFound/NotFound";
 import Footer from "./Components/Footer/Footer";
@@ -12,6 +13,8 @@ import Footer from "./Components/Footer/Footer";
 import Admin from "./Components/Hidden/Admin";
 import { dummyEvents } from "./Components/helpers/dummy-events";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// import "semantic-ui-css/semantic.min.css";
+import "./modal.scss";
 import "./Main.scss";
 
 function App() {
@@ -37,6 +40,7 @@ function App() {
               <Calendar {...props} dummyEvents={dummyEvents} />
             )}
           />
+          <Route path="/results" component={Results} />
           <Route path="/merchandise" component={Merchandise} />
           <Route
             path="/2946fec9-4210-4aea-a828-fa315bad9a43"

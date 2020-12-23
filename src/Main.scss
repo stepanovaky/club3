@@ -21,6 +21,10 @@ $navColor: #94b1ff;
 
 //UNIVERSAL
 
+.ui.fullscreen.modal {
+    width: 100%!important;
+}
+
 h1, h2, h3, h4, h5, h6, input, p, a, select, label {
     font-family: Barlow, sans-serif;
     color: $textColor;
@@ -137,6 +141,7 @@ svg#footer-navigation {
 
 .w100per {
     width: 100%;
+    
 }
 
 .container {
@@ -302,7 +307,7 @@ nav {
 }
 
 .nav-open {
-    height: 420px;
+    height: 500px;
     transition: height 250ms ease;
 }
 
@@ -635,6 +640,12 @@ div.frame.join-dog-image2 {
     margin-right: auto;
 }
 
+//RESULTS
+
+.results {
+    text-align: center;
+}
+
 //MERCHANDISE
 
 .merchandise {
@@ -764,8 +775,19 @@ div.frame.join-dog-image2 {
         margin-right: auto;
         margin-left: auto;
         width: 300px;
+        text-align: center;
     }
-    .register-button {
+
+    .react-pdf__Page__canvas {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #pdf-download {
+        color: blue;
+    }
+    
+    .register-button, .view-pdf-fullscreen-button {
         margin-left: 50px;
         margin-right: 50px;
         width: 200px;

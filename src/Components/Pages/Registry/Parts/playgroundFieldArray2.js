@@ -1,19 +1,31 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useFieldArray } from "react-hook-form";
 import NestedArray from "./playgroundNestedFieldArray";
 import { useDropzone } from "react-dropzone";
 
 export default function Fields({ control, register, setValue, getValues }) {
+  const [filesUploaded, setFilesUploaded] = useState([]);
   const { fields, append, remove } = useFieldArray({
     control,
     name: "dogs",
   });
 
   const onDrop = useCallback((acceptedFiles) => {
-    console.log(acceptedFiles, fields);
+    console.log(acceptedFiles[0].name);
+    setFilesUploaded(acceptedFiles[0].name);
     // Do something with the files
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    rootRef,
+    innerRef,
+  } = useDropzone({
+    onDrop,
+  });
+  console.log(rootRef);
+  console.log(innerRef);
 
   return (
     <>
@@ -60,28 +72,33 @@ export default function Fields({ control, register, setValue, getValues }) {
                 <option value="AKC">AKC</option>
                 <option value="NGA">NGA</option>
                 <option value="AKC ILP">AKC ILP</option>
-                <option value=" Other"> Other</option>
+                <option value="Other"> Other</option>
+                <option value="None"> None added</option>
               </select>
 
               <button type="button" onClick={() => remove(index)}>
                 Delete
               </button>
-              <div className="frame">
-                <h5>Please include dog's Registered Name in file name</h5>
-                <div
-                  {...getRootProps({
-                    refKey: getValues("dogs"),
-                  })}
-                >
-                  <input {...getInputProps()} />
-                  {isDragActive ? (
-                    <p>Drop the files here ...</p>
-                  ) : (
-                    <p>
-                      Drag 'n' drop some files here, or click to select files
-                    </p>
-                  )}
-                </div>
+              <div className={`frame ${index}`}>
+                <input
+                  type="file"
+                  name={`dogs[${index}].file`}
+                  ref={register}
+                />
+                {/* <div className={`${index}`}> */}
+                {/* <h5>Please include dog's Registered Name in file name</h5>
+                  <div {...getRootProps()}>
+                    <input {...getInputProps()} name={`dogs[${index}].file`} />
+                    {isDragActive ? (
+                      <p>Drop the files here ...</p>
+                    ) : (
+                      <p>
+                        Drag 'n' drop some files here, or click to select files
+                      </p>
+                    )}
+                  </div>
+                  {filesUploaded ? filesUploaded : null}
+                </div> */}
               </div>
             </li>
           );
