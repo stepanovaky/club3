@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import { useFieldArray } from "react-hook-form";
 import NestedArray from "./playgroundNestedFieldArray";
 import { useDropzone } from "react-dropzone";
@@ -9,6 +9,10 @@ export default function Fields({ control, register, setValue, getValues }) {
     control,
     name: "dogs",
   });
+
+  const addDog = () => {
+    append({ name: "append" });
+  };
 
   const onDrop = useCallback((acceptedFiles) => {
     console.log(acceptedFiles[0].name);
@@ -26,6 +30,10 @@ export default function Fields({ control, register, setValue, getValues }) {
   });
   console.log(rootRef);
   console.log(innerRef);
+
+  useEffect(() => {
+    addDog();
+  }, []);
 
   return (
     <>
@@ -106,12 +114,7 @@ export default function Fields({ control, register, setValue, getValues }) {
       </ul>
 
       <section>
-        <button
-          type="button"
-          onClick={() => {
-            append({ name: "append" });
-          }}
-        >
+        <button type="button" onClick={addDog}>
           Add Dog
         </button>
       </section>

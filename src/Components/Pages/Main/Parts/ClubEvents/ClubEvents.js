@@ -1,19 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-// import { usePdf } from "@mikecousins/react-pdf";
+import RegistrationModal from "../../../Events/Parts/RegistrationModal";
 import { Document, Page, pdfjs } from "react-pdf";
 import pdf from "../../../../../media/pdf/Christmas-Cup-program-2019.pdf";
-import { Button, Icon, Modal } from "semantic-ui-react";
-
-// import PdfViewer from "../../../Events/Parts/PdfViewer";
-// import PDJFSBackend from "../../../Events/Parts/pdfjs";
-// import { Viewer } from "@react-pdf-viewer/core";
-// import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
-// import "@react-pdf-viewer/core/lib/styles/index.css";
-// import "@react-pdf-viewer/default-layout/lib/styles/index.css";
-// import { PDFViewer } from "@react-pdf/renderer";
-// import PdfViewer from "../../../Events/Parts/PdfViewer";
+import { Button, Modal } from "semantic-ui-react";
 
 function ClubEvents(props) {
   function exampleReducer(state, action) {
@@ -81,12 +72,7 @@ function ClubEvents(props) {
             />
             <div className="event-form-container">
               <div className="event-form-button">
-                <input
-                  className="register-button"
-                  type="button"
-                  onClick={toggleOpen}
-                  value={open === true ? "Hide Form" : "Register For Event"}
-                />
+                <RegistrationModal />
               </div>
               <div
                 className={`event-form-registration ${

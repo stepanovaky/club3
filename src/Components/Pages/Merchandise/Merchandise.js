@@ -4,7 +4,7 @@ function Merchandise() {
   return (
     <div className="merchandise">
       <div className="container">
-        <div className="frame">
+        <div className="frame filler">
           <h1>Coming soon!</h1>
         </div>
       </div>

@@ -76,6 +76,20 @@ p {
     left: 0;
     
     width: 100%;
+    
+
+}
+
+
+
+
+
+
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }
 
 .footer-links {
@@ -500,6 +514,10 @@ div.frame.join-dog-image2 {
     display: block;
 }
 
+#pdf-download {
+    color: blue;
+}
+
 
 
 .our-dog-image {
@@ -601,6 +619,10 @@ div.frame.join-dog-image2 {
 //     margin-right: auto;
 // }
 
+//EVENTS
+
+
+
 //ABOUT
 
 .about-div {
@@ -644,12 +666,25 @@ div.frame.join-dog-image2 {
 
 .results {
     text-align: center;
+    
+}
+
+.filler {
+    text-align: center;
+   max-height: 550px;
+   max-width: 1200px;
+   margin-right: auto;
+   margin-left: auto;
 }
 
 //MERCHANDISE
 
-.merchandise {
+.filler {
     text-align: center;
+   height: 525px;
+   max-width: 1200px;
+   margin-right: auto;
+   margin-left: auto;
 }
 
 //NOT FOUND
@@ -670,6 +705,16 @@ div.frame.join-dog-image2 {
     .about-content {
         min-width: 17.5em;
         max-width:50em; 
+    }
+    .react-pdf__Page__canvas {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .pdf-div {
+        margin-right: auto;
+        margin-left: auto;
+        width: 300px;
+        text-align: center;
     }
 }
 
@@ -701,6 +746,10 @@ div.frame.join-dog-image2 {
 @media screen and (min-width: 400px) {
     .events {
         max-width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .react-pdf__Page__canvas {
         margin-left: auto;
         margin-right: auto;
     }
@@ -896,5 +945,34 @@ div.frame.join-dog-image2 {
     }
 
 @media screen and (max-width: 1200px) {
+  
+    
+}
+
+@media screen and (min-width: 1200px) {
+    .features, .join-desc, .our-dogs, .club-events, nav, .footer-top,.about, .calendar{
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .nav-link {
+        // 
+        text-align: center;
+    }
+
+    .header-container {
+        // box-shadow: none;
+    }
+
+
+  .feature-wrapper {
+      display: flex;
+      justify-content: space-between;
+//       width: 1200px;
+// margin-left: auto;
+// margin-right: auto;
+  }
+
     
 }

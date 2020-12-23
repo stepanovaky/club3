@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFieldArray } from "react-hook-form";
 
 export default ({ nestIndex, control, register }) => {
@@ -6,6 +6,21 @@ export default ({ nestIndex, control, register }) => {
     control,
     name: `dogOwner[${nestIndex}].nestedArray`,
   });
+
+  const [num, setNum] = useState(0);
+
+  let secondaryNum = 0;
+  const isDisabled = num === 2 ? true : false;
+
+  const addSecondary = () => {
+    append();
+    setNum(num + 1);
+  };
+
+  const removeSecondary = (num) => {
+    remove(num);
+    setNum(num - 1);
+  };
 
   return (
     <div>
@@ -31,14 +46,14 @@ export default ({ nestIndex, control, register }) => {
               name={`dogOwner[${nestIndex}].secondary[${k}].email`}
               ref={register({ required: true, pattern: /^\S+@\S+$/i })}
             />
-            <button type="button" onClick={() => remove(k)}>
+            <button type="button" onClick={() => removeSecondary(k)}>
               Delete Secondary Owner
             </button>
           </div>
         );
       })}
 
-      <button type="button" onClick={() => append()}>
+      <button type="button" onClick={addSecondary} disabled={isDisabled}>
         Add Secondary Owner
       </button>
 

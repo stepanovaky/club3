@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFieldArray } from "react-hook-form";
 
 export default function Fields({ control, register, setValue, getValues }) {
@@ -6,6 +6,14 @@ export default function Fields({ control, register, setValue, getValues }) {
     control,
     name: "owners",
   });
+
+  const addPrimaryOwner = () => {
+    append({ name: "append" });
+  };
+
+  useEffect(() => {
+    addPrimaryOwner();
+  }, []);
 
   return (
     <>
@@ -145,12 +153,7 @@ export default function Fields({ control, register, setValue, getValues }) {
       </ul>
 
       <section>
-        <button
-          type="button"
-          onClick={() => {
-            append({ name: "append" });
-          }}
-        >
+        <button type="button" onClick={addPrimaryOwner}>
           Add Primary Owner
         </button>
       </section>

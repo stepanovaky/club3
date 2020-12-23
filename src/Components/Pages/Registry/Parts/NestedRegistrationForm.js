@@ -22,9 +22,6 @@ function NestedRegistrationForm() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
-    console.log(data.dogs[0].file[0].name);
-
     const transformedFileName = data.dogs.map((file) => {
       const fileName = file.file.length !== 0 ? file.file[0].name : false;
       return (file = [{ ...file, fileName }]);
@@ -51,7 +48,8 @@ function NestedRegistrationForm() {
       <p>
         Primary owners own all the added dogs and will be notified every time a
         dog is registered for an event. Secondary owners can be customized to
-        the dog and also have the ability to register a dog for an event.
+        the dog and also have the ability to register a dog for an event. You
+        can only add two secondary owners per dog.
       </p>
 
       <FieldArray {...{ control, register, getValues, setValue, errors }} />
