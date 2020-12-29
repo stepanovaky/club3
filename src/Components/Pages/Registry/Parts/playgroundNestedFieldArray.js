@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useFieldArray } from "react-hook-form";
+import { Form, Button } from "semantic-ui-react";
 
 export default ({ nestIndex, control, register }) => {
   const { fields, remove, append } = useFieldArray({
@@ -28,34 +29,62 @@ export default ({ nestIndex, control, register }) => {
         return (
           <div key={item.id} style={{ marginLeft: 20 }}>
             <label>Secondary Owner:</label>
-            <input
-              type="text"
-              placeholder="First name"
-              name={`dogOwner[${nestIndex}].secondary[${k}].firstName`}
-              ref={register({ required: true, maxLength: 80 })}
-            />
-            <input
-              type="text"
-              placeholder="Last name"
-              name={`dogOwner[${nestIndex}].secondary[${k}].lastName`}
-              ref={register({ required: true, maxLength: 100 })}
-            />
-            <input
-              type="text"
-              placeholder="Email"
-              name={`dogOwner[${nestIndex}].secondary[${k}].email`}
-              ref={register({ required: true, pattern: /^\S+@\S+$/i })}
-            />
-            <button type="button" onClick={() => removeSecondary(k)}>
+            <Form.Group widths="equal">
+              <Form.Field>
+                <label>
+                  First name{" "}
+                  <input
+                    type="text"
+                    placeholder="First name"
+                    name={`dogOwner[${nestIndex}].secondary[${k}].firstName`}
+                    ref={register({ required: true, maxLength: 80 })}
+                  />
+                </label>
+              </Form.Field>
+              <Form.Field>
+                <label>
+                  Last name{" "}
+                  <input
+                    type="text"
+                    placeholder="Last name"
+                    name={`dogOwner[${nestIndex}].secondary[${k}].lastName`}
+                    ref={register({ required: true, maxLength: 100 })}
+                  />
+                </label>
+              </Form.Field>
+              <Form.Field>
+                <label>
+                  Email
+                  <input
+                    type="text"
+                    placeholder="Email"
+                    name={`dogOwner[${nestIndex}].secondary[${k}].email`}
+                    ref={register({ required: true, pattern: /^\S+@\S+$/i })}
+                  />
+                </label>
+              </Form.Field>
+            </Form.Group>
+            <Button
+              basic
+              color="blue"
+              type="button"
+              onClick={() => removeSecondary(k)}
+            >
               Delete Secondary Owner
-            </button>
+            </Button>
           </div>
         );
       })}
 
-      <button type="button" onClick={addSecondary} disabled={isDisabled}>
+      <Button
+        basic
+        color="blue"
+        type="button"
+        onClick={addSecondary}
+        disabled={isDisabled}
+      >
         Add Secondary Owner
-      </button>
+      </Button>
 
       <hr />
     </div>

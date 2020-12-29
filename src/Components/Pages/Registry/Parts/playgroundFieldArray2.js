@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState, useEffect } from "react";
 import { useFieldArray } from "react-hook-form";
 import NestedArray from "./playgroundNestedFieldArray";
 import { useDropzone } from "react-dropzone";
+import { Form, Button } from "semantic-ui-react";
 
 export default function Fields({ control, register, setValue, getValues }) {
   const [filesUploaded, setFilesUploaded] = useState([]);
@@ -42,81 +43,137 @@ export default function Fields({ control, register, setValue, getValues }) {
           return (
             <li key={item.id}>
               <NestedArray nestIndex={index} {...{ control, register }} />
-              <input
-                type="text"
-                placeholder="Registered name"
-                name={`dogs[${index}].registeredName`}
-                ref={register}
-              />
-              <input
-                type="text"
-                placeholder="Call name"
-                name={`dogs[${index}].callName`}
-                ref={register}
-              />
-              <input
-                type="text"
-                placeholder="AKC number"
-                name={`dogs[${index}].akcNumber`}
-                ref={register}
-              />
-              <input
-                type="text"
-                placeholder="Breed"
-                name={`dogs[${index}].breed`}
-                ref={register}
-              />
-              <input
-                type="date"
-                placeholder="DOB"
-                name={`dogs[${index}].dob`}
-                ref={register}
-              />
-              <select name={`dogs[${index}].gender`} ref={register}>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-              <select name={`dogs[${index}].registrationPapers`} ref={register}>
-                <option value="AKC">AKC</option>
-                <option value="NGA">NGA</option>
-                <option value="AKC ILP">AKC ILP</option>
-                <option value="Other"> Other</option>
-                <option value="None"> None added</option>
-              </select>
-
-              <button type="button" onClick={() => remove(index)}>
-                Delete
-              </button>
-              <div className={`frame ${index}`}>
+              <Form.Group widths="equal">
+                <Form.Field>
+                  <label>
+                    Registered name *
+                    <input
+                      type="text"
+                      placeholder="Registered name"
+                      name={`dogs[${index}].registeredName`}
+                      ref={register({ required: true })}
+                    />
+                  </label>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    Call name *
+                    <input
+                      type="text"
+                      placeholder="Call name"
+                      name={`dogs[${index}].callName`}
+                      ref={register({ required: true })}
+                    />
+                  </label>
+                </Form.Field>
+              </Form.Group>
+              <Form.Group widths="equal">
+                <Form.Field>
+                  <label>
+                    AKC number *
+                    <input
+                      type="text"
+                      placeholder="AKC number"
+                      name={`dogs[${index}].akcNumber`}
+                      ref={register({ required: true })}
+                    />
+                  </label>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    Microchip
+                    <input
+                      type="text"
+                      placeholder="Microchip"
+                      name={`dogs[${index}].microchip`}
+                      ref={register()}
+                    />
+                  </label>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    Breed *
+                    <input
+                      type="text"
+                      placeholder="Breed"
+                      name={`dogs[${index}].breed`}
+                      ref={register({ required: true })}
+                    />
+                  </label>
+                </Form.Field>
+              </Form.Group>
+              <Form.Group widths="equal">
+                <Form.Field>
+                  <label>
+                    DOB *
+                    <input
+                      type="date"
+                      placeholder="DOB"
+                      name={`dogs[${index}].dob`}
+                      ref={register({ required: true })}
+                    />
+                  </label>{" "}
+                </Form.Field>
+              </Form.Group>
+              <Form.Group>
+                <Form.Field>
+                  <label>
+                    Gender
+                    <select
+                      name={`dogs[${index}].gender`}
+                      ref={register({ required: true })}
+                    >
+                      <option value="" disabled selected>
+                        Select Gender *
+                      </option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </label>
+                </Form.Field>
+                <Form.Field>
+                  <label>
+                    Registration Papers *
+                    <select
+                      name={`dogs[${index}].registrationPapers`}
+                      ref={register}
+                    >
+                      <option value="" disabled selected>
+                        Select Registration Papers
+                      </option>
+                      <option value="AKC">AKC</option>
+                      <option value="NGA">NGA</option>
+                      <option value="AKC ILP">AKC ILP</option>
+                      <option value="Other"> Other</option>
+                      <option value="None"> None added</option>
+                    </select>
+                  </label>
+                </Form.Field>
+              </Form.Group>
+              <Form.Group>
                 <input
                   type="file"
                   name={`dogs[${index}].file`}
                   ref={register}
                 />
-                {/* <div className={`${index}`}> */}
-                {/* <h5>Please include dog's Registered Name in file name</h5>
-                  <div {...getRootProps()}>
-                    <input {...getInputProps()} name={`dogs[${index}].file`} />
-                    {isDragActive ? (
-                      <p>Drop the files here ...</p>
-                    ) : (
-                      <p>
-                        Drag 'n' drop some files here, or click to select files
-                      </p>
-                    )}
-                  </div>
-                  {filesUploaded ? filesUploaded : null}
-                </div> */}
-              </div>
+              </Form.Group>{" "}
+              <Button
+                basic
+                color="blue"
+                type="button"
+                onClick={() => remove(index)}
+              >
+                Delete Dog
+              </Button>
             </li>
           );
         })}
       </ul>
 
       <section>
-        <button type="button" onClick={addDog}>
+        <Button basic color="blue" type="button" onClick={addDog}>
           Add Dog
-        </button>
+        </Button>
       </section>
     </>
   );

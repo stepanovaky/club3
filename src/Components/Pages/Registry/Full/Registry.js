@@ -3,7 +3,7 @@ import RegistrationForm from "../Parts/RegistrationForm";
 
 function Registry() {
   return (
-    <div className="registry">
+    <div className="registration">
       <div className="container">
         <div>
           <div className="frame registration-frame">

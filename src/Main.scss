@@ -546,71 +546,48 @@ div.frame.join-dog-image2 {
 
 //REGISTRY
 
-.registration-form input, .registration-form select {
-    margin: 10px;
-    box-shadow: 6px 6px 3px $inputShadow;
-    border-radius: 4px;
-    background-color: transparent;
-    border: 2px solid $inputBorder;
-    font-size: 15px;
-    line-height: 18px;
-    padding: 9px 35px;
-    outline: 1px solid white;
-}
-
-.registration-form label {
-    margin: 10px;
-    font-size: 15px;
-    line-height: 18px;
-    padding: 9px;
-}
-
-.registration-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.registry {
-    margin-top: 25px;
-}
-
-.plus-icon {
-    position: relative;
-    top: 1px;
-    cursor: pointer;
-}
-
-.minus-circle {
-    position: relative;
-    top: 2px;
-    cursor: pointer;
-}
-
 .registration-frame {
-    max-width: 510px;
+    max-width: 1200px;
+    min-width: 300PX;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.register-button {
-    margin-left: 50px;
-    margin-right: 50px;
-    width: 200px;
+.registration-frame li {
+    list-style: none;
+}
+
+.registration-container {
+    margin: 10px;
+}
 
 
+.form select {
+    height: 35px!important;
+    font-size: 14px;
 }
-.enlarge-image {
-    width: 300px;
+
+.add-margin {
+    margin-top: 25px;
+    margin-bottom: 15px;
 }
-.register-form {
-    margin-left: 50px;
-    margin-right: 50px;
-    width: 192px;
-}
-.register-submit {
-    margin-left: 50px;
-    margin-right: 50px;
-    width: 200px;
-}
+
+// 
+
+// }
+// .enlarge-image {
+//     width: 300px;
+// }
+// .register-form {
+//     margin-left: 50px;
+//     margin-right: 50px;
+//     width: 192px;
+// }
+// .register-submit {
+//     margin-left: 50px;
+//     margin-right: 50px;
+//     width: 200px;
+// }
 
 
 
@@ -671,7 +648,7 @@ div.frame.join-dog-image2 {
 
 .filler {
     text-align: center;
-   max-height: 550px;
+   height: 550px;
    max-width: 1200px;
    margin-right: auto;
    margin-left: auto;
@@ -681,7 +658,7 @@ div.frame.join-dog-image2 {
 
 .filler {
     text-align: center;
-   height: 525px;
+   height: 550px;
    max-width: 1200px;
    margin-right: auto;
    margin-left: auto;
@@ -777,10 +754,10 @@ div.frame.join-dog-image2 {
 }
 
 @media screen and (min-width: 560px) {
-    .registration-frame {
-        margin-left: auto;
-        margin-right: auto;
-    }
+    // .registration-frame {
+    //     margin-left: auto;
+    //     margin-right: auto;
+    // }
 }
 
 @media screen and (min-width: 600px) {
@@ -846,16 +823,7 @@ div.frame.join-dog-image2 {
     .enlarge-image {
         width: 300px;
     }
-    .register-form {
-        margin-left: 50px;
-        margin-right: 50px;
-        width: 192px;
-    }
-    .register-submit {
-        margin-left: 50px;
-        margin-right: 50px;
-        width: 200px;
-    }
+   
 
 }
 

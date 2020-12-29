@@ -11,6 +11,18 @@ const firebaseApp = firebase.initializeApp({
   measurementId: "G-L938VST90Z",
 });
 
-const db = firebaseApp.firestore();
+const storage = firebase.storage();
+const storageRef = storage.ref();
 
-export { db };
+export const uploadFile = async (path, name, file) => {
+  console.log("this far");
+  const uploadTask = storageRef.child(`${path}/${name}`).put(file);
+  let url;
+  await uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+    url = downloadURL;
+  });
+  console.log(url);
+  return url;
+};
+
+export { storageRef };
