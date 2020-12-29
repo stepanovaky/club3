@@ -2,126 +2,64 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import RegistrationModal from "../../../Events/Parts/RegistrationModal";
-import { Document, Page, pdfjs } from "react-pdf";
-import pdf from "../../../../../media/pdf/Christmas-Cup-program-2019.pdf";
 import { Button, Modal } from "semantic-ui-react";
 
 function ClubEvents(props) {
-  function exampleReducer(state, action) {
-    switch (action.type) {
-      case "close":
-        return { open: false };
-      case "open":
-        return { open: true, size: action.size };
-      default:
-        throw new Error("Unsupported action...");
-    }
-  }
-
-  const [state, dispatch] = React.useReducer(exampleReducer, {
-    open: false,
-    size: undefined,
-  });
-  const { open, size } = state;
   //when server is built, there should be an API call
   //to the server to create the events list here
   const { dummyEvents, clubPage } = props;
-  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
 
   const [openEvent, setOpenEvent] = useState(false);
 
-  const toggleOpen = () => {
-    setOpenEvent(!openEvent);
-  };
+  // const toggleOpen = () => {
+  //   setOpenEvent(!openEvent);
+  // };
 
-  const path = window.location.pathname;
-  console.log(path);
+  // const { register, handleSubmit, errors } = useForm();
+  // const onSubmit = (data) => console.log(data);
+  // console.log(errors);
 
-  const pathClass = path === "/" ? "main-layout" : "events-layout";
+  // const displayPDF = (one, clubPage) => {
+  //   if (clubPage === "events" && one.pdfFile != null) {
+  //     return (
+  //       <div className="enlarge-image">
+  //         <div className="container">
+  //           <div
+  //             onClick={() => dispatch({ type: "open", size: "fullscreen" })}
+  //           ></div>
+  //           <input
+  //             className="view-pdf-fullscreen-button"
+  //             type="button"
+  //             value="View PDF Fullsize"
+  //             onClick={() => dispatch({ type: "open", size: "fullscreen" })}
+  //           />
+  //           <div className="event-form-container">
+  //             <div className="event-form-button"></div>
+  //             <div
+  //               className={`event-form-registration ${
+  //                 openEvent === true ? "show-form" : "hide-form"
+  //               }`}
+  //             >
+  //               <form onSubmit={handleSubmit(onSubmit)}>
+  //                 <input
+  //                   className="register-form"
+  //                   type="text"
+  //                   placeholder="Dog Sanction Number"
+  //                   name="Dog Sanction Number"
+  //                   ref={register}
+  //                 />
+  //                 <br />
 
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
-
-  const displayPDF = (one, clubPage) => {
-    if (clubPage === "events" && one.pdfFile != null) {
-      return (
-        <div className="enlarge-image">
-          <div className="container">
-            <div onClick={() => dispatch({ type: "open", size: "fullscreen" })}>
-              <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
-                <Page pageNumber={pageNumber} width="200" height="100" />
-              </Document>
-
-              <Link id="pdf-download" to={pdf} target="_blank" download>
-                Download PDF
-              </Link>
-            </div>
-            <input
-              className="view-pdf-fullscreen-button"
-              type="button"
-              value="View PDF Fullsize"
-              onClick={() => dispatch({ type: "open", size: "fullscreen" })}
-            />
-            <div className="event-form-container">
-              <div className="event-form-button">
-                <RegistrationModal />
-              </div>
-              <div
-                className={`event-form-registration ${
-                  openEvent === true ? "show-form" : "hide-form"
-                }`}
-              >
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <input
-                    className="register-form"
-                    type="text"
-                    placeholder="Dog Sanction Number"
-                    name="Dog Sanction Number"
-                    ref={register}
-                  />
-                  <br />
-
-                  <input className="register-submit" type="submit" />
-                </form>
-              </div>
-            </div>
-          </div>
-          <div>
-            <Modal
-              size={size}
-              open={open}
-              onClose={() => dispatch({ type: "close" })}
-            >
-              <Modal.Header>PDF</Modal.Header>
-              <Modal.Content>
-                <div>
-                  <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
-                    <Page pageNumber={pageNumber} width="1775" height="1800" />
-                  </Document>
-                  <p>
-                    Page {pageNumber} of {numPages}
-                  </p>
-                </div>
-              </Modal.Content>
-              <Modal.Actions>
-                <Button negative onClick={() => dispatch({ type: "close" })}>
-                  Close
-                </Button>
-              </Modal.Actions>
-            </Modal>
-          </div>
-        </div>
-      );
-    }
-  };
+  //                 <input className="register-submit" type="submit" />
+  //               </form>
+  //             </div>
+  //           </div>
+  //         </div>
+  //         <div></div>
+  //       </div>
+  //     );
+  //   }
+  // };
 
   const displayEvent = (one, index) => {
     if (one.mainPage === true) {
@@ -131,7 +69,7 @@ function ClubEvents(props) {
             <div className="frame events-frame">
               <div className={`events-frame-content `}>
                 <div className={`events-text `}>
-                  <div className={`events-text-top ${pathClass}`}>
+                  <div className={`events-text-top`}>
                     <h2 className="event-title">{one.name}</h2>
                     <h5 className="event-date-time">
                       {one.date}, <br /> {one.locationRollCallAndInspection}
@@ -140,7 +78,6 @@ function ClubEvents(props) {
                   </div>
                 </div>
               </div>
-              <div className="pdf-div">{displayPDF(one, clubPage)}</div>
             </div>
           </div>
         </div>

@@ -65,6 +65,7 @@ export default ({ nestIndex, control, register }) => {
               </Form.Field>
             </Form.Group>
             <Button
+              fluid
               basic
               color="blue"
               type="button"
@@ -76,17 +77,16 @@ export default ({ nestIndex, control, register }) => {
         );
       })}
 
-      <Button
-        basic
-        color="blue"
-        type="button"
-        onClick={addSecondary}
-        disabled={isDisabled}
-      >
-        Add Secondary Owner
-      </Button>
-
-      <hr />
+      <section className="center-button-secondary">
+        <Button
+          color="teal"
+          type="button"
+          onClick={addSecondary}
+          disabled={isDisabled}
+        >
+          Add Secondary Owner
+        </Button>
+      </section>
     </div>
   );
 };

@@ -96,24 +96,21 @@ function NestedRegistrationForm() {
       </Container>
       <div className="registration-container">
         {/* <form onSubmit={handleSubmit(onSubmit)}> */}
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Container>
+
+        <Container>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <FieldArray
               {...{ control, register, getValues, setValue, errors }}
             />
             <FieldArray2
               {...{ control, register, getValues, setValue, errors }}
             />
-          </Container>
-          <Container className="add-margin">
             <Button type="submit"> Submit </Button>{" "}
-          </Container>
-        </Form>
+          </Form>{" "}
+        </Container>
+
         {/* </form> */}
       </div>
-      <Button secondary type="Button" onClick={() => reset()}>
-        Reset
-      </Button>
     </div>
   );
 }
