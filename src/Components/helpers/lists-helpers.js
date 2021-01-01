@@ -18,7 +18,6 @@ export const dog = <GiSittingDog />;
 export const pageLinks = [
   { page: "Home", link: "/" },
   { page: "About", link: "/about" },
-  { page: "Registration", link: "/register" },
   { page: "Events", link: "/events" },
   { page: "Calendar", link: "/calendar" },
   { page: "Results", link: "/results" },

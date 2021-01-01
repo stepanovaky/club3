@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import { useFieldArray } from "react-hook-form";
 import NestedArray from "./playgroundNestedFieldArray";
-import { Form, Button, Segment } from "semantic-ui-react";
+import { Form, Button, Segment, Divider } from "semantic-ui-react";
 
 export default function Fields({ control, register, setValue, getValues }) {
   const [filesUploaded, setFilesUploaded] = useState([]);
@@ -25,9 +25,9 @@ export default function Fields({ control, register, setValue, getValues }) {
           return (
             <li key={item.id}>
               <Segment color="violet">
-                <Segment color="green">
-                  <NestedArray nestIndex={index} {...{ control, register }} />
-                </Segment>
+                <Divider horizontal>secondary owner</Divider>
+                <NestedArray nestIndex={index} {...{ control, register }} />
+                <Divider horizontal>Dog INFORMATION</Divider>
                 <Form.Group widths="equal">
                   <Form.Field>
                     <label>

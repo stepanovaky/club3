@@ -243,7 +243,7 @@ svg#footer-navigation {
     box-shadow: 6px 6px $buttonShadow;
     border-radius: 4px;
     text-align: center;
-    width: 50px;
+    width: 175px;
     background-color: #fff;
     cursor:pointer;
 }
@@ -339,7 +339,7 @@ nav {
 }
 
 .nav-open {
-    height: 500px;
+    height: 420px;
     transition: height 250ms ease;
 }
 
@@ -714,6 +714,9 @@ div.frame.join-dog-image2 {
 }
 
 @media screen and (min-width: 1001px) {
+    .menu-icon-container {
+        display: none;
+    }
     .logo-container {
         width: 225px;
     }

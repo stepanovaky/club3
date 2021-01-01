@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import RegistrationModal from "../../../Events/Parts/RegistrationModal";
 import { Button, Modal } from "semantic-ui-react";
+import { format } from "date-fns";
 
 function ClubEvents(props) {
   //when server is built, there should be an API call
   //to the server to create the events list here
-  const { dummyEvents, clubPage } = props;
+  const { events } = props;
 
-  const [openEvent, setOpenEvent] = useState(false);
+  // console.log(events[0]);
 
   // const toggleOpen = () => {
   //   setOpenEvent(!openEvent);
@@ -62,32 +63,32 @@ function ClubEvents(props) {
   // };
 
   const displayEvent = (one, index) => {
-    if (one.mainPage === true) {
-      return (
-        <div key={index} className="events-div">
-          <div className="events-list-item">
+    return (
+      <div key={index} className="events-div">
+        <div className="events-list-item">
+          <Link to={`/eventpage/${one.eventId}`}>
             <div className="frame events-frame">
               <div className={`events-frame-content `}>
                 <div className={`events-text `}>
                   <div className={`events-text-top`}>
-                    <h2 className="event-title">{one.name}</h2>
+                    <h2 className="event-title">{one.eventName}</h2>
                     <h5 className="event-date-time">
-                      {one.date}, <br /> {one.locationRollCallAndInspection}
+                      {format(new Date(one.startDate), "MMM Lo yyyy")}, <br />{" "}
+                      {format(new Date(one.endDate), "MMM Lo yyyy")}
                     </h5>
-                    <p>{one.desc}</p>
+                    <p>{one.eventAddress}</p> <br />
+                    <p>{one.eventDescription}</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
-      );
-    } else {
-      return null;
-    }
+      </div>
+    );
   };
 
-  const listEvents = dummyEvents.map((one, index) => {
+  const listEvents = events[0].map((one, index) => {
     return displayEvent(one, index);
   });
 
@@ -102,7 +103,7 @@ function ClubEvents(props) {
             <h2>Tempor amet aute </h2>
           </div>
         </div>
-        {listEvents}
+        {events !== undefined ? listEvents : null}
       </div>
     </div>
   );

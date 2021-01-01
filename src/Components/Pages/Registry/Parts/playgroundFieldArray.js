@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useFieldArray, Controller } from "react-hook-form";
-import { Form, Button, Segment } from "semantic-ui-react";
+import { Form, Button, Segment, Divider } from "semantic-ui-react";
 
 export default function Fields({ control, register, setValue, getValues }) {
   const { fields, append, remove } = useFieldArray({
@@ -23,6 +23,7 @@ export default function Fields({ control, register, setValue, getValues }) {
           return (
             <li key={item.id}>
               <Segment color="teal">
+                <Divider horizontal>Primary Owner INFORMATION</Divider>
                 <Form.Group widths="equal">
                   <Form.Field>
                     <label>

@@ -4,6 +4,7 @@ import { useFieldArray } from "react-hook-form";
 import { Menu, Segment, Form } from "semantic-ui-react";
 import FindDog from "./FindDog";
 import FindOwner from "./FindOwner";
+import RegisterEvent from "./RegisterEvent";
 
 // /2946fec9-4210-4aea-a828-fa315bad9a43
 
@@ -51,6 +52,7 @@ function Admin() {
 
           {activeItem === "findDog" ? <FindDog /> : null}
           {activeItem === "findOwner" ? <FindOwner /> : null}
+          {activeItem === "registerEvent" ? <RegisterEvent /> : null}
         </div>
       </div>
     </div>

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Components/Header/Full/Header";
 import Main from "./Components/Pages/Main/Full/Main";
 import About from "./Components/Pages/About/About";
 import Registry from "./Components/Pages/Registry/Full/Registry";
 import Events from "./Components/Pages/Events/Events";
+import EventPage from "./Components/Pages/EventPage/EventPage";
 import Calendar from "./Components/Pages/Calendar/Calendar";
 import Results from "./Components/Pages/Results/Results";
 import Merchandise from "./Components/Pages/Merchandise/Merchandise";
@@ -11,7 +12,7 @@ import NotFound from "./Components/Pages/NotFound/NotFound";
 import Footer from "./Components/Footer/Footer";
 //ADMIN PAGES
 import Admin from "./Components/Hidden/Admin";
-import { dummyEvents } from "./Components/helpers/dummy-events";
+import { events } from "./Components/helpers/dummy-events";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import "semantic-ui-css/semantic.min.css";
 import "./modal.scss";
@@ -23,28 +24,17 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={(props) => <Main {...props} dummyEvents={dummyEvents} />}
-          />
+          <Route exact path="/" component={Main} />
           <Route path="/about" component={About} />
-          <Route path="/register" component={Registry} />
-          <Route
-            path="/events"
-            render={(props) => <Events {...props} dummyEvents={dummyEvents} />}
-          />
-          <Route
-            path="/calendar"
-            render={(props) => (
-              <Calendar {...props} dummyEvents={dummyEvents} />
-            )}
-          />
+          <Route path="/joinclub" component={Registry} />
+          <Route path="/events" component={Events} />
+          <Route path="/eventpage/:eventId" component={EventPage} />
+          <Route path="/calendar" component={Calendar} />
           <Route path="/results" component={Results} />
           <Route path="/merchandise" component={Merchandise} />
           <Route
             path="/2946fec9-4210-4aea-a828-fa315bad9a43"
-            render={(props) => <Admin {...props} dummyEvents={dummyEvents} />}
+            component={Admin}
           />
           <Route component={NotFound} />
         </Switch>
