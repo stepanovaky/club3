@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import DisplayImg from "./DisplayImg";
+import RegisterForEvent from "./RegisterForEvent";
+import { format } from "date-fns";
 import { apiUrl } from "../../helpers/backend";
 
 function EventPage(props) {
@@ -7,9 +10,7 @@ function EventPage(props) {
     const getRequest = await fetch(`${apiUrl}/api/events`);
 
     const response = await getRequest.json();
-    console.log(props.match.params.eventId);
     const responseParsed = JSON.parse(response.events);
-    console.log(responseParsed);
     setEvents([responseParsed]);
   };
 
@@ -20,7 +21,7 @@ function EventPage(props) {
       ? events[0].find((one) => id === one.eventId)
       : undefined;
 
-  console.log(event);
+  //   console.log(event);
 
   useEffect(() => {
     fetchEvents();
@@ -33,13 +34,28 @@ function EventPage(props) {
             <div className="caption">
               <h2>{event !== undefined ? event.eventName : null}</h2>
             </div>
-            <h5>{event !== undefined ? event.eventDescription : null}</h5>
+            <h5>
+              {event !== undefined
+                ? format(new Date(event.startDate), "MMM do")
+                : null}
+            </h5>
           </div>
-          {event !== undefined
-            ? event.premium !== undefined
-              ? event.premium
-              : "Coming Soon"
-            : null}
+          <div>
+            {event !== undefined ? (
+              <RegisterForEvent id={event.eventId} />
+            ) : null}
+          </div>
+          <div className="title-bundle">
+            <h5>
+              {event !== undefined ? (
+                event.pdfUrl !== undefined ? (
+                  <DisplayImg imgUrl={event.pdfUrl} />
+                ) : (
+                  "More Information Coming Soon!"
+                )
+              ) : null}
+            </h5>
+          </div>
         </div>
       </div>
     </div>

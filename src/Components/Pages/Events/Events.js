@@ -11,7 +11,7 @@ function Events() {
     const response = await getRequest.json();
     // console.log(response.events);
     const responseParsed = JSON.parse(response.events);
-    console.log(responseParsed);
+    // console.log(responseParsed);
     setEvents([responseParsed]);
   };
 

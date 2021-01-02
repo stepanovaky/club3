@@ -9,14 +9,14 @@ function BackgroundImage() {
           <div className="container">
             <div className="background-image-content">
               <h1 className="background-image-content-heading">
-                Elit anim eu ex commodo id
+                Central Florida Sighthound Racing Club
               </h1>
-              <p className="background-image-content-paragraph">
+              {/* <p className="background-image-content-paragraph">
                 Ex exercitation sint enim qui nostrud cupidatat ea excepteur
                 veniam ipsum. Velit velit eiusmod cillum officia. Consectetur
                 culpa adipisicing veniam eu consectetur ex non officia sit
                 reprehenderit eiusmod tempor.
-              </p>
+              </p> */}
               <LearnMoreButton />
             </div>
           </div>

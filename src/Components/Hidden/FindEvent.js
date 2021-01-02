@@ -59,22 +59,22 @@ function FindEvent() {
       //   console.log(thing);
       // });
     }
-    if (data.eventPdf.length === 0 || data.eventPdf === undefined) {
-      console.log("hello2");
-    } else {
-      //code to upload eventpdf
-      const uploadTask = storageRef
-        .child(`events/${data.eventOption}/${data.eventPdf[0].name}`)
-        .put(data.eventPdf[0]);
-      uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-        return downloadURL;
-      });
-      // .then((res) => {
-      //   data = { ...data, pdfUrl: res };
-      // })
-      // .then(() => console.log(data));
-    }
+    // if (data.eventPdf.length === 0 || data.eventPdf === undefined) {
+    //   console.log("hello2");
+    // } else {
+    //   //code to upload eventpdf
+    //   const uploadTask = storageRef
+    //     .child(`events/${data.eventOption}/${data.eventPdf[0].name}`)
+    //     .put(data.eventPdf[0]);
+    //   uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+    //     return downloadURL;
+    //   });
+    // .then((res) => {
+    //   data = { ...data, pdfUrl: res };
+    // })
+    // .then(() => console.log(data));
   };
+  //   };
 
   return (
     <div className="find-event">
@@ -128,7 +128,7 @@ function FindEvent() {
                 />
               </label>
             </Form.Field>
-            <Form.Field>
+            {/* <Form.Field>
               <label>
                 Event end date:
                 <input
@@ -141,10 +141,10 @@ function FindEvent() {
                   ref={register({ required: true })}
                 />
               </label>
-            </Form.Field>
+            </Form.Field> */}
           </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Field>
+          {/* <Form.Group widths="equal"> */}
+          {/* <Form.Field>
               <label>
                 Event address:
                 <input
@@ -177,8 +177,8 @@ function FindEvent() {
                   ref={register}
                 />
               </label>
-            </Form.Field>
-          </Form.Group>
+            </Form.Field> */}
+          {/* </Form.Group> */}
           <Form.Group widths="equal">
             <Form.Field>
               <label>
@@ -192,7 +192,7 @@ function FindEvent() {
                 />
               </label>
             </Form.Field>
-            <Form.Field>
+            {/* <Form.Field>
               <label>
                 {" "}
                 Add .pdf file
@@ -203,7 +203,7 @@ function FindEvent() {
                   accept="application/pdf"
                 />
               </label>
-            </Form.Field>
+            </Form.Field> */}
           </Form.Group>
           <Button type="submit">Submit</Button>
         </Container>

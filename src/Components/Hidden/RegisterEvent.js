@@ -44,43 +44,6 @@ function RegisterEvent() {
                 />
               </label>
             </Form.Field>
-            <Form.Field>
-              <label>
-                Event end date:
-                <input
-                  type="date"
-                  placeholder="End date"
-                  name="endDate"
-                  ref={register({ required: true })}
-                />
-              </label>
-            </Form.Field>
-          </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Field>
-              <label>
-                Event address:
-                <input
-                  type="text"
-                  placeholder="Address"
-                  name="address"
-                  ref={register({ required: true })}
-                />
-              </label>
-            </Form.Field>
-          </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Field>
-              <label>
-                Event description:
-                <input
-                  type="text"
-                  placeholder="Description"
-                  name="description"
-                  ref={register}
-                />
-              </label>
-            </Form.Field>
           </Form.Group>
 
           <Button type="submit">Submit</Button>

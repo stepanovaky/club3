@@ -39,12 +39,12 @@ function Main(props) {
   return (
     <div className="main w100per">
       <BackgroundImage />
-      <Features />
+      {/* <Features />
       <JoinDesc />
       <SectionSeparator />
       <OurDogs />
       <SectionSeparator />
-      {events[0] !== undefined ? <ClubEvents events={events} /> : null}
+      {events[0] !== undefined ? <ClubEvents events={events} /> : null} */}
     </div>
   );
 }

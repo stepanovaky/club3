@@ -10,6 +10,29 @@ function ClubEvents(props) {
   //to the server to create the events list here
   const { events } = props;
 
+  // console.log(events[0]);
+  // console.log(new Date(events[0][0].startDate).getTime());
+
+  const bubbleSort = (arr) => {
+    let temp;
+    // console.log(new Date(arr[0].startDate).getTime());
+    for (let i = arr.length - 1; i > 0; i--) {
+      for (let j = 0; j < i; j++) {
+        if (
+          new Date(arr[j].startDate).getTime() >
+          new Date(arr[j + 1].startDate).getTime()
+        ) {
+          temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
+    }
+    return arr;
+  };
+
+  bubbleSort(events[0]);
+
   const displayEvent = (one, index) => {
     return (
       <div key={index} className="events-div">
