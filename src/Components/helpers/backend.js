@@ -1,1 +1,1 @@
-export const apiUrl = "https://clubcfs-backend.herokuapp.com/";
+export const apiUrl = "https://clubcfs-backend.herokuapp.com";
