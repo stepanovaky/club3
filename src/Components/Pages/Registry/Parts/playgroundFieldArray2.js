@@ -140,6 +140,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     type="file"
                     name={`dogs[${index}].file`}
                     ref={register}
+                    accept="image/jpeg, application/pdf"
                   />
                 </Form.Group>{" "}
                 <Button

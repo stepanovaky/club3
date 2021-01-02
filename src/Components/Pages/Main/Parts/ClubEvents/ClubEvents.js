@@ -10,58 +10,6 @@ function ClubEvents(props) {
   //to the server to create the events list here
   const { events } = props;
 
-  // console.log(events[0]);
-
-  // const toggleOpen = () => {
-  //   setOpenEvent(!openEvent);
-  // };
-
-  // const { register, handleSubmit, errors } = useForm();
-  // const onSubmit = (data) => console.log(data);
-  // console.log(errors);
-
-  // const displayPDF = (one, clubPage) => {
-  //   if (clubPage === "events" && one.pdfFile != null) {
-  //     return (
-  //       <div className="enlarge-image">
-  //         <div className="container">
-  //           <div
-  //             onClick={() => dispatch({ type: "open", size: "fullscreen" })}
-  //           ></div>
-  //           <input
-  //             className="view-pdf-fullscreen-button"
-  //             type="button"
-  //             value="View PDF Fullsize"
-  //             onClick={() => dispatch({ type: "open", size: "fullscreen" })}
-  //           />
-  //           <div className="event-form-container">
-  //             <div className="event-form-button"></div>
-  //             <div
-  //               className={`event-form-registration ${
-  //                 openEvent === true ? "show-form" : "hide-form"
-  //               }`}
-  //             >
-  //               <form onSubmit={handleSubmit(onSubmit)}>
-  //                 <input
-  //                   className="register-form"
-  //                   type="text"
-  //                   placeholder="Dog Sanction Number"
-  //                   name="Dog Sanction Number"
-  //                   ref={register}
-  //                 />
-  //                 <br />
-
-  //                 <input className="register-submit" type="submit" />
-  //               </form>
-  //             </div>
-  //           </div>
-  //         </div>
-  //         <div></div>
-  //       </div>
-  //     );
-  //   }
-  // };
-
   const displayEvent = (one, index) => {
     return (
       <div key={index} className="events-div">
@@ -73,8 +21,8 @@ function ClubEvents(props) {
                   <div className={`events-text-top`}>
                     <h2 className="event-title">{one.eventName}</h2>
                     <h5 className="event-date-time">
-                      {format(new Date(one.startDate), "MMM Lo yyyy")}, <br />{" "}
-                      {format(new Date(one.endDate), "MMM Lo yyyy")}
+                      {format(new Date(one.startDate), "MMM do yyyy")}, <br />{" "}
+                      {format(new Date(one.endDate), "MMM do yyyy")}
                     </h5>
                     <p>{one.eventAddress}</p> <br />
                     <p>{one.eventDescription}</p>

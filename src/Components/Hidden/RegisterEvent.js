@@ -37,7 +37,7 @@ function RegisterEvent() {
               <label>
                 Event start date:
                 <input
-                  type="datetime-local"
+                  type="date"
                   placeholder="Start date"
                   name="startDate"
                   ref={register({ required: true })}
@@ -48,7 +48,7 @@ function RegisterEvent() {
               <label>
                 Event end date:
                 <input
-                  type="datetime-local"
+                  type="date"
                   placeholder="End date"
                   name="endDate"
                   ref={register({ required: true })}
@@ -56,7 +56,7 @@ function RegisterEvent() {
               </label>
             </Form.Field>
           </Form.Group>
-          <Form.Group>
+          <Form.Group widths="equal">
             <Form.Field>
               <label>
                 Event address:

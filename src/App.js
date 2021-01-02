@@ -32,10 +32,7 @@ function App() {
           <Route path="/calendar" component={Calendar} />
           <Route path="/results" component={Results} />
           <Route path="/merchandise" component={Merchandise} />
-          <Route
-            path="/2946fec9-4210-4aea-a828-fa315bad9a43"
-            component={Admin}
-          />
+          <Route path="/admin" component={Admin} />
           <Route component={NotFound} />
         </Switch>
         <Footer />
