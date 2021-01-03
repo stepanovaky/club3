@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { apiUrl } from "../../helpers/backend";
 import { Calendar, momentLocalizer } from "react-big-calendar";
+import { addDays } from "date-fns";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 function MyCalendar(props) {
   const localizer = momentLocalizer(moment);
-
-  const thing1 = new Date(2021, 0, 15, 15, 0, 0);
-  const thing2 = new Date(2021, 0, 15, 17, 0, 0);
-
-  // const myEventsList = [{ title: "Event", start: thing1, end: thing2 }];
 
   const [events, setEvents] = useState([]);
   const fetchEvents = async () => {
@@ -18,7 +14,6 @@ function MyCalendar(props) {
 
     const response = await getRequest.json();
     const responseParsed = JSON.parse(response.events);
-    console.log(responseParsed);
     setEvents([responseParsed]);
   };
 
@@ -31,8 +26,8 @@ function MyCalendar(props) {
       ? events[0].map((one) => {
           return {
             title: one.name,
-            start: one.startDate,
-            end: one.startDate,
+            start: addDays(new Date(one.startDate), 1),
+            end: addDays(new Date(one.startDate), 1),
           };
         })
       : null;

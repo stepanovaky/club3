@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import DisplayImg from "./DisplayImg";
 import RegisterForEvent from "./RegisterForEvent";
-import { format } from "date-fns";
+import { format, addDays } from "date-fns";
 import { apiUrl } from "../../helpers/backend";
+import { Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 function EventPage(props) {
   const [events, setEvents] = useState([]);
@@ -36,7 +38,7 @@ function EventPage(props) {
             </div>
             <h5>
               {event !== undefined
-                ? format(new Date(event.startDate), "MMM do")
+                ? format(addDays(new Date(event.startDate), 1), "MMM do")
                 : null}
             </h5>
           </div>
@@ -56,6 +58,13 @@ function EventPage(props) {
               ) : null}
             </h5>
           </div>
+          {event !== undefined ? (
+            event.jpgUrl !== undefined ? (
+              <a href={event.jpgUrl} target="_blank" download>
+                <Button>Download Premium</Button>
+              </a>
+            ) : null
+          ) : null}
         </div>
       </div>
     </div>

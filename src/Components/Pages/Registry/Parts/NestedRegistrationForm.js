@@ -5,7 +5,6 @@ import FieldArray from "./playgroundFieldArray";
 import FieldArray2 from "./playgroundFieldArray2";
 import { apiUrl } from "../../../helpers/backend";
 import { Container, Header, Button, Form } from "semantic-ui-react";
-import { FaAllergies } from "react-icons/fa";
 
 function NestedRegistrationForm() {
   const {
@@ -80,6 +79,7 @@ function NestedRegistrationForm() {
           to the dog and also have the ability to register a dog for an event.
           You can only add two secondary owners per dog.
         </p>
+        <p>$15 per dog added</p>
       </Container>
       <div className="registration-container">
         {/* <form onSubmit={handleSubmit(onSubmit)}> */}
