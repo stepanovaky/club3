@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import RegistrationModal from "../../../Events/Parts/RegistrationModal";
 import { Button, Modal } from "semantic-ui-react";
-import { format } from "date-fns";
+import { format, addDays } from "date-fns";
 
 function ClubEvents(props) {
   //when server is built, there should be an API call
@@ -44,8 +44,11 @@ function ClubEvents(props) {
                   <div className={`events-text-top`}>
                     <h2 className="event-title">{one.eventName}</h2>
                     <h5 className="event-date-time">
-                      {format(new Date(one.startDate), "MMM do yyyy")}, <br />{" "}
-                      {format(new Date(one.endDate), "MMM do yyyy")}
+                      {format(
+                        addDays(new Date(one.startDate), 1),
+                        "MMM do yyyy"
+                      )}{" "}
+                      <br />{" "}
                     </h5>
                     <p>{one.eventAddress}</p> <br />
                     <p>{one.eventDescription}</p>

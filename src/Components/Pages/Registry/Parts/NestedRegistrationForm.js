@@ -18,68 +18,55 @@ function NestedRegistrationForm() {
     setValue,
   } = useForm();
 
-  const onChange = () => {
-    alert(getValues("toast"));
+  const onSubmit = async (data) => {
+    // console.log(data);
+
+    const transformedData = async () => {
+      const urlList = [];
+      for await (let dog of data.dogs) {
+        // console.log(dog);
+        if (dog.file !== undefined || dog.file.length !== 0) {
+          // console.log("thing");
+          urlList.push({ ...dog, akcPapersUrl: "" });
+        } else {
+          // console.log("boo");
+
+          // .then((res) => {
+          //   ;
+          // });
+          const uploadTask = await storageRef
+            .child(`dog/${dog.akcNumber}/${dog.file[0].name}`)
+            .put(dog.file[0]);
+
+          const akcPapersUrl = await uploadTask.ref.getDownloadURL();
+          urlList.push({ ...dog, akcPapersUrl });
+        }
+      }
+      console.log(urlList);
+      return urlList;
+    };
+
+    transformedData()
+      .then((res) => {
+        data = { ...data, transformed: res };
+        return data;
+      })
+      .then((res) => {
+        // console.log(res);
+        setTimeout(function () {
+          sendRegistration(res);
+        }, 500);
+      });
   };
 
-  // const handleToast = (event) => {
-  //   event.preventDefault();
-
-  //   console.log(event.target["owners.firstName"].value);
-  // };
-
-  const onSubmit = async (data) => {
-    console.log(data);
-
-    data.dogs.map((file) => {
-      const urlList = [];
-      if (file.file !== undefined && file.file.length !== 0) {
-        const uploadTask = storageRef
-          .child(`dogs/${file.akcNumber}/${file.file[0].name}`)
-          .put(file.file[0]);
-
-        uploadTask.snapshot.ref
-          .getDownloadURL()
-          .then(function (downloadURL) {
-            return downloadURL;
-          })
-          .then((res) => {
-            urlList.push({ ...file, res });
-          })
-          .then(() => {
-            console.log(urlList);
-            const transformedData = {
-              ...data,
-              dogsWithFileNames: urlList,
-            };
-            return transformedData;
-          })
-          .then((res) => {
-            console.log(res);
-            const postUser = fetch(`${apiUrl}/api/registration`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(res),
-            });
-          });
-      } else {
-        urlList.push({ ...file });
-
-        const transformedData = {
-          ...data,
-          dogsWithFileNames: urlList,
-        };
-
-        const postUser = fetch(`${apiUrl}/api/registration`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(transformedData),
-        });
-      }
+  const sendRegistration = async (data) => {
+    // console.log("boo");
+    const postData = await fetch(`${apiUrl}/api/registration`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
   };
 

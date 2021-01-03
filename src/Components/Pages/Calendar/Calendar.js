@@ -32,7 +32,7 @@ function MyCalendar(props) {
           return {
             title: one.name,
             start: one.startDate,
-            end: one.endDate,
+            end: one.startDate,
           };
         })
       : null;

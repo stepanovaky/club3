@@ -21,7 +21,7 @@ function EventPage(props) {
       ? events[0].find((one) => id === one.eventId)
       : undefined;
 
-  //   console.log(event);
+  console.log(event);
 
   useEffect(() => {
     fetchEvents();
@@ -48,8 +48,8 @@ function EventPage(props) {
           <div className="title-bundle">
             <h5>
               {event !== undefined ? (
-                event.pdfUrl !== undefined ? (
-                  <DisplayImg imgUrl={event.pdfUrl} />
+                event.jpgUrl !== undefined ? (
+                  <DisplayImg imgUrl={event.jpgUrl} />
                 ) : (
                   "More Information Coming Soon!"
                 )

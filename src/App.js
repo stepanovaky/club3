@@ -3,6 +3,7 @@ import Header from "./Components/Header/Full/Header";
 import Main from "./Components/Pages/Main/Full/Main";
 import About from "./Components/Pages/About/About";
 import Registry from "./Components/Pages/Registry/Full/Registry";
+import VerifyEmail from "./Components/Pages/VerifyEmail/VerifyEmail";
 import Events from "./Components/Pages/Events/Events";
 import EventPage from "./Components/Pages/EventPage/EventPage";
 import Calendar from "./Components/Pages/Calendar/Calendar";
@@ -27,6 +28,10 @@ function App() {
           <Route exact path="/" component={Main} />
           <Route path="/about" component={About} />
           <Route path="/joinclub" component={Registry} />
+          <Route
+            path="/verifyemail/:verificationToken"
+            component={VerifyEmail}
+          />
           <Route path="/events" component={Events} />
           <Route path="/eventpage/:eventId" component={EventPage} />
           <Route path="/calendar" component={Calendar} />

@@ -121,7 +121,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                       Registration Papers *
                       <select
                         name={`dogs[${index}].registrationPapers`}
-                        ref={register}
+                        ref={register({ required: false })}
                       >
                         <option value="" disabled selected>
                           Select Registration Papers
@@ -139,7 +139,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                   <input
                     type="file"
                     name={`dogs[${index}].file`}
-                    ref={register}
+                    ref={register({ required: false })}
                     accept="image/jpeg, application/pdf"
                   />
                 </Form.Group>{" "}

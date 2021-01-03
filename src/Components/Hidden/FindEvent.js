@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { apiUrl } from "../helpers/backend";
 import { useForm } from "react-hook-form";
-import { format } from "date-fns";
+import { format, addDays } from "date-fns";
 import { Form, Button, Container } from "semantic-ui-react";
 import { storageRef } from "../../firebase";
 
@@ -20,13 +20,36 @@ function FindEvent() {
     fetchEvents();
   }, []);
 
+  const sortedOptions = (arr) => {
+    console.log(arr);
+    let temp;
+    if (arr !== undefined) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        for (let j = 0; j < i; j++) {
+          if (
+            new Date(arr[j].startDate).getTime() >
+            new Date(arr[j + 1].startDate).getTime()
+          ) {
+            temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }
+    }
+    //
+  };
+
+  sortedOptions(events[0]);
+  console.log(events[0]);
+
   const eventsOptions =
     events[0] !== undefined
       ? events[0].map((option) => {
           return (
             <option key={option.eventId} value={option.eventId}>
-              {option.eventName}, {format(new Date(option.startDate), "MMM do")}{" "}
-              to {format(new Date(option.endDate), "MMM do")}
+              {option.eventName},{" "}
+              {format(addDays(new Date(option.startDate), 1), "MMM dd")}{" "}
             </option>
           );
         })
@@ -41,7 +64,6 @@ function FindEvent() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
-    let thing = {};
     if (data.eventJpg.length === 0 || data.eventJpg === undefined) {
       console.log("hello");
     } else {
@@ -50,31 +72,23 @@ function FindEvent() {
         .child(`events/${data.eventOption}/${data.eventJpg[0].name}`)
         .put(data.eventJpg[0]);
 
-      //   }
-
-      // .then((res) => {
-      //   thing = { ...data, jpgUrl: res };
-      // })
-      // .then(() => {
-      //   console.log(thing);
-      // });
+      uploadTask.ref.getDownloadURL().then((res) => {
+        data = { ...data, jpgUrl: res };
+        updateEvent(data);
+      });
     }
-    // if (data.eventPdf.length === 0 || data.eventPdf === undefined) {
-    //   console.log("hello2");
-    // } else {
-    //   //code to upload eventpdf
-    //   const uploadTask = storageRef
-    //     .child(`events/${data.eventOption}/${data.eventPdf[0].name}`)
-    //     .put(data.eventPdf[0]);
-    //   uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-    //     return downloadURL;
-    //   });
-    // .then((res) => {
-    //   data = { ...data, pdfUrl: res };
-    // })
-    // .then(() => console.log(data));
   };
-  //   };
+
+  const updateEvent = async (data) => {
+    console.log(data);
+    const sendEvent = await fetch(`${apiUrl}/api/update/event`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  };
 
   return (
     <div className="find-event">
