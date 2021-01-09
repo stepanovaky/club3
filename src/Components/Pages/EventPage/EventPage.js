@@ -50,8 +50,8 @@ function EventPage(props) {
           <div className="title-bundle">
             <h5>
               {event !== undefined ? (
-                event.jpgUrl !== undefined ? (
-                  <DisplayImg imgUrl={event.jpgUrl} />
+                event.pdfUrl !== undefined ? (
+                  <DisplayImg pdfUrl={event.pdfUrl} />
                 ) : (
                   "More Information Coming Soon!"
                 )
