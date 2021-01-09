@@ -58,6 +58,10 @@ input[type="button"]:focus {
     outline: none;
 }
 
+input[type="text"]:invalid {
+    color: red;
+}
+
 h5 {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -947,10 +951,7 @@ div.frame.join-dog-image2 {
         text-align: center;
     }
 
-    .header-container {
-        // box-shadow: none;
-    }
-
+    
 
   .feature-wrapper {
       display: flex;

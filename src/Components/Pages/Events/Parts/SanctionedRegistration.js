@@ -12,7 +12,7 @@ import {
 import { apiUrl } from "../../../helpers/backend";
 import { useHistory } from "react-router-dom";
 
-function SanctionedRegistration() {
+function SanctionedRegistration(props) {
   const { register, handleSubmit } = useForm();
   const [message, setMessage] = useState();
   const [sanction, setSanction] = useState();
@@ -25,7 +25,10 @@ function SanctionedRegistration() {
 
   const onSubmit = async () => {
     console.log(addedDogs);
-    history.push("/confirm", { sanctionedEventRegistration: addedDogs });
+    history.push("/confirm", {
+      sanctionedEventRegistration: addedDogs,
+      sanctionedPrice: props.sanctionedPrice,
+    });
   };
 
   const findDog = () => {

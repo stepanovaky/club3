@@ -40,7 +40,7 @@ function ConfirmationPage(props) {
       console.log(price);
       // console.log("here");
     } else if (props.location.state.sanctionedEventRegistration) {
-      setPrice(15);
+      setPrice(props.location.state.sanctionedPrice);
     }
   }, []);
 

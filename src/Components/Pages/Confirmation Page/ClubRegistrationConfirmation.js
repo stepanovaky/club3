@@ -339,7 +339,7 @@ function ClubRegistrationConfirmation(props) {
                           ) : null;
                         });
                       })
-                    : "there"}
+                    : null}
 
                   <Form.Group widths="equal">
                     <Form.Field>

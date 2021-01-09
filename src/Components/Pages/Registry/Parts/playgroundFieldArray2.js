@@ -33,6 +33,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       Registered name *
                       <input
+                        required
                         type="text"
                         placeholder="Registered name"
                         name={`dogs[${index}].registeredName`}
@@ -44,6 +45,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       Call name *
                       <input
+                        required
                         type="text"
                         placeholder="Call name"
                         name={`dogs[${index}].callName`}
@@ -57,6 +59,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       Registration number *
                       <input
+                        required
                         type="text"
                         placeholder="AKC number"
                         name={`dogs[${index}].akcNumber`}
@@ -79,6 +82,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       Breed *
                       <input
+                        required
                         type="text"
                         placeholder="Breed"
                         name={`dogs[${index}].breed`}
@@ -92,6 +96,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       DOB *
                       <input
+                        required
                         type="date"
                         placeholder="DOB"
                         name={`dogs[${index}].dob`}
@@ -103,13 +108,14 @@ export default function Fields({ control, register, setValue, getValues }) {
                 <Form.Group>
                   <Form.Field>
                     <label>
-                      Gender
+                      Gender *
                       <select
+                        required
                         name={`dogs[${index}].gender`}
                         ref={register({ required: true })}
                       >
                         <option value="" disabled selected>
-                          Select Gender *
+                          Select Gender
                         </option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -120,6 +126,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       Registration Papers *
                       <select
+                        required
                         name={`dogs[${index}].registrationPapers`}
                         ref={register({ required: false })}
                       >

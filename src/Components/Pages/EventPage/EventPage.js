@@ -46,7 +46,11 @@ function EventPage(props) {
             {event !== undefined ? (
               event.pdfUrl !== undefined ? (
                 event.startDate === "2021-01-24" ? null : (
-                  <RegisterForEvent id={event.eventId} />
+                  <RegisterForEvent
+                    id={event.eventId}
+                    sanctionedPrice={event.sanctionedPrice}
+                    unsanctionedPrice={event.unsanctionedPrice}
+                  />
                 )
               ) : null
             ) : null}

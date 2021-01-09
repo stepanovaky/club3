@@ -34,6 +34,7 @@ export default ({ nestIndex, control, register }) => {
                 <label>
                   First name m{" "}
                   <input
+                    required
                     type="text"
                     placeholder="First name"
                     name={`dogOwner[${nestIndex}].secondary[${k}].firstName`}
@@ -45,6 +46,7 @@ export default ({ nestIndex, control, register }) => {
                 <label>
                   Last name{" "}
                   <input
+                    required
                     type="text"
                     placeholder="Last name"
                     name={`dogOwner[${nestIndex}].secondary[${k}].lastName`}
@@ -56,6 +58,7 @@ export default ({ nestIndex, control, register }) => {
                 <label>
                   Email
                   <input
+                    required
                     type="text"
                     placeholder="Email"
                     name={`dogOwner[${nestIndex}].secondary[${k}].email`}

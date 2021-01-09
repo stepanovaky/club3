@@ -12,10 +12,7 @@ function NonsanctionedRegistration() {
   const onSubmit = async (data) => {};
   return (
     <div className="nonsanctioned-registration">
-      <p>
-        <Link to="/registration">Click here</Link> to register for Central
-        Florida Sighthound Racing Club
-      </p>
+      <p>Register for event</p>
       <Segment vertical>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h5>Owner Fields</h5>
@@ -24,6 +21,8 @@ function NonsanctionedRegistration() {
               <label>
                 First Name
                 <input
+                  error
+                  required
                   type="text"
                   placeholder="First name"
                   name={`owners.firstName`}

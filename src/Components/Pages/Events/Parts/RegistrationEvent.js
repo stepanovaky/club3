@@ -10,8 +10,9 @@ import {
 import SanctionedRegistration from "./SanctionedRegistration";
 import NonsanctionedRegistration from "./NonsanctionedRegistration";
 
-function RegistrationEvent() {
+function RegistrationEvent(props) {
   const [ifRegistered, setIfRegistered] = useState(true);
+  console.log(props);
 
   return (
     <div className="registration-event">
@@ -19,9 +20,11 @@ function RegistrationEvent() {
         {ifRegistered ? "I do not have a sanction ID" : "I have a sanction ID"}
       </Button>
       {ifRegistered ? (
-        <SanctionedRegistration />
+        <SanctionedRegistration sanctionedPrice={props.sanctionedPrice} />
       ) : (
-        <NonsanctionedRegistration />
+        <NonsanctionedRegistration
+          unsanctionedPrice={props.unsanctionedPrice}
+        />
       )}
     </div>
   );

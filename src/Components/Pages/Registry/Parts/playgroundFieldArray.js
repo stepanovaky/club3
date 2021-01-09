@@ -29,6 +29,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       First name{" "}
                       <input
+                        required
                         type="text"
                         placeholder="First name"
                         name={`owners[${index}].firstName`}
@@ -40,6 +41,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       Last name
                       <input
+                        required
                         type="text"
                         placeholder="Last name"
                         name={`owners[${index}].lastName`}
@@ -52,6 +54,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                   <label>
                     Email{" "}
                     <input
+                      required
                       type="text"
                       placeholder="Email"
                       name={`owners[${index}].email`}
@@ -64,6 +67,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       Mobile number{" "}
                       <input
+                        required
                         type="tel"
                         placeholder="Mobile number"
                         name={`owners[${index}].mobile`}
@@ -92,6 +96,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       Address Line 1{" "}
                       <input
+                        required
                         type="text"
                         placeholder="Address Line 1"
                         name={`owners[${index}].addressOne`}
@@ -116,6 +121,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       Zip code{" "}
                       <input
+                        required
                         type="number"
                         placeholder="Zip code"
                         name={`owners[${index}].zipCode`}
@@ -127,6 +133,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       City{" "}
                       <input
+                        required
                         type="text"
                         placeholder="City"
                         name={`owners[${index}].city`}
@@ -138,6 +145,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                     <label>
                       State{" "}
                       <select
+                        required
                         placeholder="State"
                         name={`owners[${index}].state`}
                         ref={register({ required: true })}
