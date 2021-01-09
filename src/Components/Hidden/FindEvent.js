@@ -64,7 +64,7 @@ function FindEvent() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
-    if (data.eventJpg.length === 0 || data.eventJpg === undefined) {
+    if (data.eventJpg === undefined || data.eventJpg.length === 0) {
       console.log("hello");
     } else {
       //code to upload eventjpg

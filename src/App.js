@@ -9,6 +9,7 @@ import EventPage from "./Components/Pages/EventPage/EventPage";
 import Calendar from "./Components/Pages/Calendar/Calendar";
 import Results from "./Components/Pages/Results/Results";
 import Merchandise from "./Components/Pages/Merchandise/Merchandise";
+import ConfirmationPage from "./Components/Pages/Confirmation Page/ConfirmationPage";
 import NotFound from "./Components/Pages/NotFound/NotFound";
 import Footer from "./Components/Footer/Footer";
 //ADMIN PAGES
@@ -37,6 +38,7 @@ function App() {
           <Route path="/calendar" component={Calendar} />
           <Route path="/results" component={Results} />
           <Route path="/merchandise" component={Merchandise} />
+          <Route path="/confirm" component={ConfirmationPage} />
           <Route path="/admin" component={Admin} />
           <Route component={NotFound} />
         </Switch>

@@ -69,14 +69,7 @@ function ClubEvents(props) {
   return (
     <div className="club-events w100per">
       <div className="container">
-        <div className="title-bundle">
-          <div className="caption">
-            <h2>Id occaecat proident </h2>
-          </div>
-          <div className="section-header">
-            <h2>Tempor amet aute </h2>
-          </div>
-        </div>
+        <div className="title-bundle"></div>
         {events !== undefined ? listEvents : null}
       </div>
     </div>

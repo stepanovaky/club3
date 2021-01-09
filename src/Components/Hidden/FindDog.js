@@ -4,12 +4,13 @@ import { apiUrl } from "../helpers/backend";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import { Form, Button, Container } from "semantic-ui-react";
+import RenderDog from "./RenderDog";
 
 function FindDog() {
   const [dog, setDog] = useState([]);
+  const [message, setMessage] = useState();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = async (data) => {
-    console.log(data);
     const fetchDog = await fetch(`${apiUrl}/api/find/dog`, {
       method: "GET",
       headers: {
@@ -21,61 +22,27 @@ function FindDog() {
 
     if (response.status === 200) {
       const fetchResponse = await response.json();
-      console.log(fetchResponse);
       setDog([JSON.parse(fetchResponse.message)]);
     }
+    setMessage();
     if (response.status === 400) {
       const fetchResponse = await response.json();
-      console.log(fetchResponse);
+      setMessage("No dog found");
     }
   };
 
-  const displayDog = dog.map((d) => {
-    console.log(d);
-    return (
-      <ul>
-        <li>Registered Name: {d.registeredName}</li>
-        <li>Call Name: {d.callName}</li>
-        <li>AKC Number: {d.akcNumber}</li>
-        <li>Sanction Id: {d.sanctionId}</li>
-        <li>ID: {d.id}</li>
-        <li>
-          Registration Status: {d.registered ? "Registered" : "Not registered"}
-        </li>
-        <li>Microchip: {d.microchip}</li>
-        <li>Gender: {d.gender}</li>
-        <li>DOB: {d.dob}</li>
-        <li>Breed: {d.breed}</li>
-        {/* <li>Expires: {format(new Date(d.exp), "MMM")}</li> */}
-        <li>Registration Papers: {d.registrationPapersType}</li>
-        <li>
-          <Link to={d.registrationPapersUrl} target="_blank" download>
-            View Registration Papers
-          </Link>
-        </li>
-        <li>
-          Primary Owner Ids:{" "}
-          {
-            <ol>
-              {d.primaryIds.map((id) => {
-                return <li>{id}</li>;
-              })}
-            </ol>
-          }
-        </li>
-        <li>
-          Secondary Owner Ids:{" "}
-          {
-            <ol>
-              {d.secondaryIds.map((id) => {
-                return <li>{id}</li>;
-              })}
-            </ol>
-          }
-        </li>
-      </ul>
-    );
-  });
+  const displayDog =
+    dog.length >= 1 && dog[0] !== undefined
+      ? dog[0] === undefined
+        ? null
+        : dog[0].map((d, index) => {
+            return (
+              <div key={index}>
+                <RenderDog d={d} />
+              </div>
+            );
+          })
+      : null;
 
   return (
     <div className="find-dog">
@@ -104,9 +71,11 @@ function FindDog() {
             </Form.Field>
           </Form.Group>
         </Container>{" "}
+        <p>{message}</p>
         <Button type="submit">Submit</Button>
       </Form>
-      <div>{dog !== undefined ? displayDog : null}</div>
+
+      <div>{dog.length === 0 ? null : displayDog}</div>
     </div>
   );
 }
