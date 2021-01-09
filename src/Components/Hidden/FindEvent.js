@@ -64,16 +64,16 @@ function FindEvent() {
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
-    if (data.eventJpg === undefined || data.eventJpg.length === 0) {
+    if (data.eventPdf === undefined || data.eventPdf.length === 0) {
       console.log("hello");
     } else {
       //code to upload eventjpg
       const uploadTask = await storageRef
-        .child(`events/${data.eventOption}/${data.eventJpg[0].name}`)
-        .put(data.eventJpg[0]);
+        .child(`${data.eventPdf[0].name}`)
+        .put(data.eventPdf[0]);
 
       uploadTask.ref.getDownloadURL().then((res) => {
-        data = { ...data, jpgUrl: res };
+        data = { ...data, pdfUrl: res };
         updateEvent(data);
       });
     }
@@ -157,6 +157,30 @@ function FindEvent() {
               </label>
             </Form.Field> */}
           </Form.Group>
+          <Form.Group>
+            <Form.Field>
+              <label>
+                Price of Sanctioned Dog Registration:
+                <input
+                  type="number"
+                  placeholder="Sanctioned Price"
+                  name="sanctionedPrice"
+                  ref={register({ required: true })}
+                />
+              </label>
+            </Form.Field>
+            <Form.Field>
+              <label>
+                Price of Unsanctioned Dog Registration:
+                <input
+                  type="number"
+                  placeholder="Unsanctioned Price"
+                  name="unsanctionedPrice"
+                  ref={register({ required: true })}
+                />
+              </label>
+            </Form.Field>
+          </Form.Group>
           {/* <Form.Group widths="equal"> */}
           {/* <Form.Field>
               <label>
@@ -197,12 +221,12 @@ function FindEvent() {
             <Form.Field>
               <label>
                 {" "}
-                Add .jpeg file
+                Add .pdf file
                 <input
                   ref={register}
-                  name="eventJpg"
+                  name="eventPdf"
                   type="file"
-                  accept="image/jpeg"
+                  accept="application/pdf"
                 />
               </label>
             </Form.Field>

@@ -216,7 +216,7 @@ function NonsanctionedRegistration() {
           <Form.Group widths="equal">
             <Form.Field>
               <label>
-                AKC Number
+                Registration Number
                 <input
                   type="text"
                   placeholder="AKC number"

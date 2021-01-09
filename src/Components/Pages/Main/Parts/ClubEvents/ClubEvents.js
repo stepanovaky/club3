@@ -33,6 +33,24 @@ function ClubEvents(props) {
 
   bubbleSort(events[0]);
 
+  const today = new Date();
+
+  const passed = [];
+
+  const passedDate = (arr) => {
+    arr.filter((item) => {
+      if (new Date(item.startDate).getTime() < addDays(today.getTime(), -1)) {
+      } else {
+        console.log("there");
+        passed.push(item);
+      }
+    });
+  };
+
+  passedDate(events[0]);
+
+  console.log(passed);
+
   const displayEvent = (one, index) => {
     return (
       <div key={index} className="events-div">
@@ -62,7 +80,7 @@ function ClubEvents(props) {
     );
   };
 
-  const listEvents = events[0].map((one, index) => {
+  const listEvents = passed.map((one, index) => {
     return displayEvent(one, index);
   });
 

@@ -55,7 +55,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                 <Form.Group widths="equal">
                   <Form.Field>
                     <label>
-                      AKC number *
+                      Registration number *
                       <input
                         type="text"
                         placeholder="AKC number"

@@ -32,7 +32,7 @@ export default ({ nestIndex, control, register }) => {
             <Form.Group widths="equal">
               <Form.Field>
                 <label>
-                  First name{" "}
+                  First name m{" "}
                   <input
                     type="text"
                     placeholder="First name"

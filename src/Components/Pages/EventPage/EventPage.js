@@ -44,14 +44,18 @@ function EventPage(props) {
           </div>
           <div>
             {event !== undefined ? (
-              <RegisterForEvent id={event.eventId} />
+              event.pdfUrl !== undefined ? (
+                event.startDate === "2021-01-24" ? null : (
+                  <RegisterForEvent id={event.eventId} />
+                )
+              ) : null
             ) : null}
           </div>
           <div className="title-bundle">
             <h5>
               {event !== undefined ? (
-                event.jpgUrl !== undefined ? (
-                  <DisplayImg imgUrl={event.jpgUrl} />
+                event.pdfUrl !== undefined ? (
+                  <DisplayImg pdfUrl={event.pdfUrl} />
                 ) : (
                   "More Information Coming Soon!"
                 )
@@ -59,8 +63,8 @@ function EventPage(props) {
             </h5>
           </div>
           {event !== undefined ? (
-            event.jpgUrl !== undefined ? (
-              <a href={event.jpgUrl} target="_blank" download>
+            event.pdfUrl !== undefined ? (
+              <a href={event.pdfUrl} target="_blank" download>
                 <Button>Download Premium</Button>
               </a>
             ) : null

@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { Form, Button, Header, Segment } from "semantic-ui-react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { format } from "date-fns";
+import { storageRef } from "../../../firebase";
+import { apiUrl } from "../../helpers/backend";
 
 function ClubRegistrationConfirmation(props) {
   console.log(props);
+  const success = props.success;
   const owners = props.data.owners;
   const dogs = props.data.dogs;
   const secondary = props.data.dogOwner;
   const handleNumDogs = props.handleNumDogs;
-  console.log(owners, dogs);
+  console.log(owners, dogs, secondary);
   const {
     control,
     register,
@@ -21,19 +24,80 @@ function ClubRegistrationConfirmation(props) {
   } = useForm();
 
   const [isDisabled, setIsDisabled] = useState(true);
+  const [theData, setTheData] = useState({ data: props.data });
+  console.log(theData);
 
   const { fields, append, remove } = useFieldArray({
     control,
     name: "dogs",
   });
 
-  const onSubmit = async (data) => {
+  if (success) {
+    console.log("success");
+    const transformedData = async () => {
+      const urlList = [];
+      for await (let dog of theData.data.dogs) {
+        console.log(dog);
+        if (dog.file === undefined || dog.file.length === 0) {
+          console.log("thing");
+          urlList.push({ ...dog, akcPapersUrl: "" });
+        } else {
+          console.log("boo");
+
+          //   .then((res) => {
+          //     ;
+          //   });
+          const uploadTask = await storageRef
+            .child(`dog/${dog.akcNumber}/${dog.file[0].name}`)
+            .put(dog.file[0]);
+
+          const akcPapersUrl = await uploadTask.ref.getDownloadURL();
+          urlList.push({ ...dog, akcPapersUrl });
+        }
+      }
+      console.log(urlList);
+      return urlList;
+    };
+
+    transformedData()
+      .then((res) => {
+        const data = { ...theData.data, transformed: res };
+        return data;
+      })
+      .then((res) => {
+        console.log(res);
+        setTimeout(function () {
+          sendRegistration(res);
+        }, 500);
+      });
+    //  };
+
+    const sendRegistration = async (data) => {
+      console.log("boo");
+      const postData = await fetch(`${apiUrl}/api/registration`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    };
+  }
+
+  const onSubmit = async (form) => {
     if (isDisabled === false) {
-      console.log(data.owners, data.dogs, data.dogOwner);
-      handleNumDogs(data.dogs.length);
+      console.log(form.owners, form.dogs, form.dogOwner);
+      //   handleNumDogs(data.dogs.length);
+      setTheData({
+        data: {
+          dogs: form.dogs,
+          owners: form.owners,
+          secondary: form.dogOwner,
+        },
+      });
     } else {
       console.log({ data: { owners, dogs, secondary } });
-      handleNumDogs(data.dogs.length);
+      setTheData({ data: { owners, dogs, secondary } });
     }
   };
 
@@ -49,7 +113,7 @@ function ClubRegistrationConfirmation(props) {
       <div className="container">
         <div className="frame">
           <Header as="h1">Confirmation for Club Sanction Application</Header>{" "}
-          <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form onChange={handleSubmit(onSubmit)}>
             <Header as="h2">Primary Owner Information</Header>
             {owners.map((owner, index) => {
               return (
@@ -450,11 +514,6 @@ function ClubRegistrationConfirmation(props) {
               <Button negative onClick={removeDisabled}>
                 Edit
               </Button>
-              {isDisabled ? null : (
-                <Button type="submit" positive>
-                  Submit
-                </Button>
-              )}
             </Button.Group>
           </Form>
           <div id="paypal-button-container"></div>
