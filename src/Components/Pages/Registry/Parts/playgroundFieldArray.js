@@ -232,11 +232,7 @@ export default function Fields({ control, register, setValue, getValues }) {
         })}
       </ul>
 
-      <section className="center-button-primary">
-        <Button color="blue" type="button" onClick={addPrimaryOwner}>
-          Add Primary Owner
-        </Button>
-      </section>
+      <section className="center-button-primary"></section>
     </>
   );
 }

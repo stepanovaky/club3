@@ -17,7 +17,6 @@ function BackgroundImage() {
                 culpa adipisicing veniam eu consectetur ex non officia sit
                 reprehenderit eiusmod tempor.
               </p> */}
-              <LearnMoreButton />
             </div>
           </div>
         </div>
