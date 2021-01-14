@@ -1,4 +1,4 @@
-export const apiUrl = "https://clubcfs-backend.herokuapp.com";
+export const apiUrl = "http://localhost:8000";
 
 // https://clubcfs-backend.herokuapp.com
 // http://localhost:8000

@@ -28,10 +28,13 @@ function Footer() {
                 <br /> with us on
                 <br /> facebook!
                 <br />
-                <Link to="https://www.facebook.com/groups/714718341874468">
+                <a
+                  href="https://www.facebook.com/groups/714718341874468"
+                  target="_blank"
+                >
                   {" "}
                   <FaFacebook id="footer-navigation" size="2em" />{" "}
-                </Link>
+                </a>
               </h6>
             </div>
           </div>
