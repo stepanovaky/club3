@@ -28,7 +28,7 @@ function Footer() {
                 <br /> with us on
                 <br /> facebook!
                 <br />
-                <Link to="">
+                <Link to="https://www.facebook.com/groups/714718341874468">
                   {" "}
                   <FaFacebook id="footer-navigation" size="2em" />{" "}
                 </Link>
