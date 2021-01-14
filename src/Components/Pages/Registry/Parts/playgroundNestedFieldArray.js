@@ -32,7 +32,7 @@ export default ({ nestIndex, control, register }) => {
             <Form.Group widths="equal">
               <Form.Field>
                 <label>
-                  First name m{" "}
+                  First name *{" "}
                   <input
                     required
                     type="text"
@@ -44,7 +44,7 @@ export default ({ nestIndex, control, register }) => {
               </Form.Field>
               <Form.Field>
                 <label>
-                  Last name{" "}
+                  Last name *{" "}
                   <input
                     required
                     type="text"
@@ -56,7 +56,7 @@ export default ({ nestIndex, control, register }) => {
               </Form.Field>
               <Form.Field>
                 <label>
-                  Email
+                  Email *
                   <input
                     required
                     type="text"

@@ -5,7 +5,7 @@ function Results() {
     <div className="results">
       <div className="container filler">
         <div className="frame ">
-          <div classname="filler-content">
+          <div className="filler-content">
             <h1>Coming soon!</h1>
           </div>
         </div>

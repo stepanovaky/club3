@@ -8,11 +8,27 @@ import {
   Label,
   Table,
 } from "semantic-ui-react";
+import { apiUrl } from "../../helpers/backend";
 
 function SanctionedEventRegistration(props) {
   console.log(props);
   const addedDogs = props.data;
   console.log(addedDogs);
+
+  if (props.success === true) {
+    console.log("almost");
+    const sendData = async () => {
+      console.log("this far");
+      const postDog = await fetch(`${apiUrl}/api/event/add/sanctioned`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ addedDogs: addedDogs, eventId: props.eventId }),
+      });
+    };
+    sendData();
+  }
   return (
     <div className="sanctioned-event-registration">
       {addedDogs.length !== 0 ? (
@@ -20,7 +36,7 @@ function SanctionedEventRegistration(props) {
           <p>
             <strong>Added Dogs:</strong>
           </p>
-          <Table basic="very" collapsing padded columns={2}>
+          <Table basic="very" collapsing padded columns={4}>
             <Table.Row>
               <Table.HeaderCell>
                 <p>

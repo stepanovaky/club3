@@ -20,9 +20,13 @@ function RegistrationEvent(props) {
         {ifRegistered ? "I do not have a sanction ID" : "I have a sanction ID"}
       </Button>
       {ifRegistered ? (
-        <SanctionedRegistration sanctionedPrice={props.sanctionedPrice} />
+        <SanctionedRegistration
+          eventId={props.eventId}
+          sanctionedPrice={props.sanctionedPrice}
+        />
       ) : (
         <NonsanctionedRegistration
+          eventId={props.eventId}
           unsanctionedPrice={props.unsanctionedPrice}
         />
       )}

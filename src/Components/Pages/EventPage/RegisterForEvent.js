@@ -8,6 +8,7 @@ function RegisterForEvent(props) {
   return (
     <div className="register-for-event">
       <RegistrationEvent
+        eventId={props.id}
         sanctionedPrice={props.sanctionedPrice}
         unsanctionedPrice={props.unsanctionedPrice}
       />

@@ -31,7 +31,7 @@ export default function Fields({ control, register, setValue, getValues }) {
           return (
             <li key={item.id}>
               <div>
-                <Segment color="teal">
+                <Segment color="purple">
                   <Divider horizontal>
                     secondary owner(s) for Dog{" "}
                     {dogName === "" ? index + 1 : dogName}

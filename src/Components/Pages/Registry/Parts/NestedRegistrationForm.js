@@ -88,6 +88,7 @@ function NestedRegistrationForm() {
           You can only add two secondary owners per dog.
         </p>
         <p>$15 per dog added</p>
+        <p>* fields are required</p>
       </Container>
       <div className="registration-container">
         {/* <form onSubmit={handleSubmit(onSubmit)}> */}

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import ClubRegistrationConfirmation from "./ClubRegistrationConfirmation";
 import SanctionedEventRegistration from "./SanctionedEventRegistration";
-import PaypalExpressBtn from "react-paypal-express-checkout";
-import PaypalBtn from "react-paypal-checkout";
+import UnsanctionedEventRegistration from "./UnsanctionedEventRegistration";
+
 import { PayPalButton } from "react-paypal-button-v2";
 import { Container, Segment } from "semantic-ui-react";
 
@@ -24,8 +23,8 @@ function ConfirmationPage(props) {
   } else if (props.location.state.sanctionedEventRegistration) {
     numDogs = props.location.state.sanctionedEventRegistration.length;
     console.log(numDogs);
-  } else if (props.location.state.unsanctionedEventRegistration) {
-    console.log("unsanction");
+  } else if (props.location.state.nonsanctionedEventRegistration) {
+    numDogs = props.location.state.nonsanctionedEventRegistration.dogs.length;
   }
 
   //
@@ -41,6 +40,8 @@ function ConfirmationPage(props) {
       // console.log("here");
     } else if (props.location.state.sanctionedEventRegistration) {
       setPrice(props.location.state.sanctionedPrice);
+    } else {
+      setPrice(15);
     }
   }, []);
 
@@ -64,9 +65,21 @@ function ConfirmationPage(props) {
       ) : null}
       {props.location.state.sanctionedEventRegistration ? (
         <SanctionedEventRegistration
+          eventId={props.location.state.eventId}
+          success={success}
           data={props.location.state.sanctionedEventRegistration}
         />
       ) : null}
+      {props.location.state.nonsanctionedEventRegistration ? (
+        <UnsanctionedEventRegistration
+          dogs={props.location.state.nonsanctionedEventRegistration.dogs}
+          owners={props.location.state.nonsanctionedEventRegistration.owners}
+          eventId={props.location.state.eventId}
+          success={success}
+        />
+      ) : null}
+
+      {/* {props.location.state.nonsanctionedEventRegistration? } */}
       <div id="paypal-button-container"></div>
       {/* <PaypalExpressBtn client={client} currency={"USD"} total={1.0} /> */}
       {/* <PayPalButton
@@ -76,35 +89,37 @@ function ConfirmationPage(props) {
       {/* <PaypalBtn client={client} currency={"USD"} total={1.0} /> */}
       <Segment>
         <Container>
-          <PayPalButton
-            style={{
-              color: "blue",
-              layout: "horizontal",
-              shape: "pill",
-              size: "25",
-            }}
-            // amount={userPays}
-            amount="0.01"
-            options={{
-              clientId:
-                "ARbGmjFABclmA7CwOIsCyDvk8n9cQjXipoZ_KL5oaTaj-Bz9jpTqYCFV_LTxT6qaHzQ7Vzf8N8shVscJ",
-            }}
-            // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
-            onSuccess={(details, data) => {
-              alert(
-                "Transaction completed by " + details.payer.name.given_name
-              );
-              handleSuccess(data);
+          <p>Total: ${userPays}.00</p>
+          <div style={{ width: "200px" }}>
+            <PayPalButton
+              style={{
+                color: "white",
+                layout: "horizontal",
+                shape: "pill",
+                size: "25",
+              }}
+              // amount={userPays}
+              amount="0.01"
+              options={{
+                shippingPreference: "NO_SHIPPING",
+              }}
+              // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+              onSuccess={(details, data) => {
+                handleSuccess(data);
+                alert(
+                  "Transaction completed by " + details.payer.name.given_name
+                );
 
-              // OPTIONAL: Call your server to save the transaction
-              //   return fetch("/paypal-transaction-complete", {
-              //     method: "post",
-              //     body: JSON.stringify({
-              //       orderID: data.orderID,
-              //     }),
-              //   });
-            }}
-          />
+                // OPTIONAL: Call your server to save the transaction
+                //   return fetch("/paypal-transaction-complete", {
+                //     method: "post",
+                //     body: JSON.stringify({
+                //       orderID: data.orderID,
+                //     }),
+                //   });
+              }}
+            />
+          </div>
         </Container>
       </Segment>
     </div>

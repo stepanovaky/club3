@@ -27,7 +27,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                 <Form.Group widths="equal">
                   <Form.Field>
                     <label>
-                      First name{" "}
+                      First name *{" "}
                       <input
                         required
                         type="text"
@@ -39,7 +39,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                   </Form.Field>
                   <Form.Field>
                     <label>
-                      Last name
+                      Last name *
                       <input
                         required
                         type="text"
@@ -52,7 +52,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                 </Form.Group>
                 <Form.Field>
                   <label>
-                    Email{" "}
+                    Email *{" "}
                     <input
                       required
                       type="text"
@@ -65,7 +65,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                 <Form.Group widths="equal">
                   <Form.Field>
                     <label>
-                      Mobile number{" "}
+                      Mobile number *{" "}
                       <input
                         required
                         type="tel"
@@ -94,7 +94,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                 <Form.Group widths="equal">
                   <Form.Field>
                     <label>
-                      Address Line 1{" "}
+                      Address Line 1 *{" "}
                       <input
                         required
                         type="text"
@@ -119,7 +119,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                 <Form.Group widths="equal">
                   <Form.Field>
                     <label>
-                      Zip code{" "}
+                      Zip code *{" "}
                       <input
                         required
                         type="number"
@@ -131,7 +131,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                   </Form.Field>
                   <Form.Field>
                     <label>
-                      City{" "}
+                      City *{" "}
                       <input
                         required
                         type="text"
@@ -143,7 +143,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                   </Form.Field>
                   <Form.Field>
                     <label>
-                      State{" "}
+                      State *{" "}
                       <select
                         required
                         placeholder="State"
@@ -151,7 +151,7 @@ export default function Fields({ control, register, setValue, getValues }) {
                         ref={register({ required: true })}
                       >
                         <option value="" disabled selected>
-                          Select State
+                          Select State *
                         </option>
                         <option value="AL">AL</option>
                         <option value="AK">AK</option>

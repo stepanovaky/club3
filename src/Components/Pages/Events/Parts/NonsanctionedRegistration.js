@@ -1,15 +1,43 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect } from "react";
+import { useForm, useFieldArray } from "react-hook-form";
 import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { Container, Header, Form, Segment, Label } from "semantic-ui-react";
+import {
+  Container,
+  Header,
+  Form,
+  Segment,
+  Label,
+  Divider,
+} from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 
-function NonsanctionedRegistration() {
-  const { register, handleSubmit } = useForm();
+function NonsanctionedRegistration(props) {
+  console.log(props);
+  const history = useHistory();
+  const { control, register, handleSubmit } = useForm();
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "dogs",
+  });
 
   const goRegister = () => {};
 
-  const onSubmit = async (data) => {};
+  const addDog = () => {
+    append({ name: "append" });
+  };
+
+  useEffect(() => {
+    addDog();
+  }, []);
+
+  const onSubmit = async (data) => {
+    history.push("/confirm", {
+      eventId: props.eventId,
+      nonsanctionedEventRegistration: data,
+    });
+  };
   return (
     <div className="nonsanctioned-registration">
       <p>Register for event</p>
@@ -188,76 +216,124 @@ function NonsanctionedRegistration() {
             </Form.Field>
           </Form.Group>
           <h5>Dog Fields</h5>
-          <Form.Group widths="equal">
-            <Form.Field>
-              <label>
-                Registered Name
-                <input
-                  type="text"
-                  placeholder="Registered name"
-                  name={`dogs.registeredName`}
-                  ref={register}
-                />
-              </label>
-            </Form.Field>
-            <Form.Field>
-              <label>
-                Call Name
-                <input
-                  type="text"
-                  placeholder="Call name"
-                  name={`dogs.callName`}
-                  ref={register}
-                />
-              </label>
-            </Form.Field>
-          </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Field>
-              <label>
-                Registration Number
-                <input
-                  type="text"
-                  placeholder="AKC number"
-                  name={`dogs.akcNumber`}
-                  ref={register}
-                />
-              </label>
-            </Form.Field>
-            <Form.Field>
-              <label>
-                Breed
-                <input
-                  type="text"
-                  placeholder="Breed"
-                  name={`dogs.breed`}
-                  ref={register}
-                />
-              </label>
-            </Form.Field>
-          </Form.Group>
-          <Form.Group widths="equal">
-            <Form.Field>
-              <label>
-                DOB
-                <input
-                  type="date"
-                  placeholder="DOB"
-                  name={`dogs.dob`}
-                  ref={register}
-                />
-              </label>
-            </Form.Field>
-            <Form.Field>
-              <label>
-                Gender
-                <select name={`dogs.gender`} ref={register}>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </label>
-            </Form.Field>
-          </Form.Group>
+          {fields.map((item, index) => {
+            return (
+              <div key={index}>
+                <Segment color="violet">
+                  <Divider horizontal>Dog {index + 1} INFORMATION</Divider>
+                  <Form.Group widths="equal">
+                    <Form.Field>
+                      <label>
+                        Registered name *
+                        <input
+                          id="dogName"
+                          required
+                          type="text"
+                          placeholder="Registered name"
+                          name={`dogs[${index}].registeredName`}
+                          ref={register({ required: true })}
+                        />
+                      </label>
+                    </Form.Field>
+                    <Form.Field>
+                      <label>
+                        Call name *
+                        <input
+                          required
+                          type="text"
+                          placeholder="Call name"
+                          name={`dogs[${index}].callName`}
+                          ref={register({ required: true })}
+                        />
+                      </label>
+                    </Form.Field>
+                  </Form.Group>
+                  <Form.Group widths="equal">
+                    <Form.Field>
+                      <label>
+                        Registration number *
+                        <input
+                          required
+                          type="text"
+                          placeholder="AKC number"
+                          name={`dogs[${index}].akcNumber`}
+                          ref={register({ required: true })}
+                        />
+                      </label>
+                    </Form.Field>
+                    <Form.Field>
+                      <label>
+                        Microchip
+                        <input
+                          type="text"
+                          placeholder="Microchip"
+                          name={`dogs[${index}].microchip`}
+                          ref={register()}
+                        />
+                      </label>
+                    </Form.Field>
+                    <Form.Field>
+                      <label>
+                        Breed *
+                        <input
+                          required
+                          type="text"
+                          placeholder="Breed"
+                          name={`dogs[${index}].breed`}
+                          ref={register({ required: true })}
+                        />
+                      </label>
+                    </Form.Field>
+                  </Form.Group>
+                  <Form.Group widths="equal">
+                    <Form.Field>
+                      <label>
+                        DOB *
+                        <input
+                          required
+                          type="date"
+                          placeholder="DOB"
+                          name={`dogs[${index}].dob`}
+                          ref={register({ required: true })}
+                        />
+                      </label>{" "}
+                    </Form.Field>
+                    <Form.Field>
+                      <label>
+                        Gender *
+                        <select
+                          required
+                          name={`dogs[${index}].gender`}
+                          ref={register({ required: true })}
+                        >
+                          <option value="" disabled selected>
+                            Select Gender
+                          </option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                        </select>
+                      </label>
+                    </Form.Field>
+                  </Form.Group>
+
+                  <Button
+                    fluid
+                    basic
+                    color="blue"
+                    type="button"
+                    onClick={() => remove(index)}
+                  >
+                    Delete Dog
+                  </Button>
+                </Segment>
+              </div>
+            );
+          })}
+          <section className="center-button-dog">
+            <Button color="blue" type="button" onClick={addDog}>
+              Add Another Dog
+            </Button>
+          </section>
           <Button type="submit">Submit</Button>
         </Form>
       </Segment>
