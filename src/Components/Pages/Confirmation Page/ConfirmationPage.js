@@ -15,6 +15,7 @@ function ConfirmationPage(props) {
   console.log(props.location.state);
 
   const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState();
 
   let numDogs;
 
@@ -106,8 +107,10 @@ function ConfirmationPage(props) {
               // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
               onSuccess={(details, data) => {
                 handleSuccess(data);
-                alert(
-                  "Transaction completed by " + details.payer.name.given_name
+                setMessage(
+                  "Success! " +
+                    "Transaction completed by " +
+                    details.payer.name.given_name
                 );
 
                 // OPTIONAL: Call your server to save the transaction
@@ -122,6 +125,7 @@ function ConfirmationPage(props) {
           </div>
         </Container>
       </Segment>
+      <h5>{message}</h5>
     </div>
   );
 }
