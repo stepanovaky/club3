@@ -54,7 +54,7 @@ function SanctionedEventRegistration(props) {
                 return (
                   <Table.Row>
                     <Table.Cell>
-                      <p>{dog.callName}</p>
+                      <p>{dog.callName !== undefined ? dog.callName : null}</p>
                     </Table.Cell>
                     <Table.Cell>
                       <p>{dog.sanctionId}</p>

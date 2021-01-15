@@ -101,7 +101,7 @@ function SanctionedRegistration(props) {
                   type="text"
                   placeholder="Call name"
                   name="callName"
-                  ref={register({ required: true })}
+                  ref={register()}
                 />
               </label>
               <p>{message}</p>
@@ -111,6 +111,7 @@ function SanctionedRegistration(props) {
               <label>
                 Sanction ID
                 <input
+                  required
                   type="text"
                   defaultValue={sanction}
                   placeholder="Sanction ID"
