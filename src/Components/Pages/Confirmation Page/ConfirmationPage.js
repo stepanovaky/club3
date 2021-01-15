@@ -99,8 +99,8 @@ function ConfirmationPage(props) {
                 shape: "pill",
                 size: "25",
               }}
-              // amount={userPays}
-              amount="0.01"
+              amount={userPays}
+              // amount="0.01"
               options={{
                 shippingPreference: "NO_SHIPPING",
               }}
