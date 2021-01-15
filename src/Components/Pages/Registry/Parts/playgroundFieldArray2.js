@@ -149,7 +149,9 @@ export default function Fields({ control, register, setValue, getValues }) {
                           </option>
                           <option value="AKC">AKC</option>
                           <option value="NGA">NGA</option>
-                          <option value="AKC ILP">AKC ILP</option>
+                          <option value="AKC ILP">AKC PAL</option>
+                          <option value="NALLA">NALLA</option>
+                          <option value="CKC">CKC</option>
                           <option value="Other"> Other</option>
                           <option value="None"> None added</option>
                         </select>
