@@ -18,7 +18,7 @@ function SanctionedRegistration(props) {
   const [message, setMessage] = useState();
   const [sanction, setSanction] = useState();
   const [addedDogs, setAddedDogs] = useState([]);
-  const [callName, setCallName] = useState();
+  const [callNameOfDog, setCallName] = useState();
   const [repeatMessage, setRepeatMessage] = useState();
   const [disableAddDog, setDisableAddDog] = useState(false);
 
@@ -33,7 +33,7 @@ function SanctionedRegistration(props) {
     });
   };
 
-  const findDog = () => {
+  const findDogByCallName = () => {
     const callName = document.getElementById("call");
     console.log(callName.value);
 
@@ -49,7 +49,26 @@ function SanctionedRegistration(props) {
         setRepeatMessage("");
       }
     }
-    fetchDog(callName.value.toLowerCase());
+    fetchDogByCallName(callName.value.toLowerCase());
+  };
+
+  const findDogBySanctionId = () => {
+    const sanctionId = document.getElementById("sanction");
+    console.log(sanctionId.value);
+
+    for (const dog of addedDogs) {
+      console.log(dog);
+      if (sanctionId.value === dog.sanctionId) {
+        // console.log("true");
+        setRepeatMessage("Dog already added");
+        setDisableAddDog(true);
+      } else if (sanctionId.value !== dog.sanctionId) {
+        setDisableAddDog(false);
+        // console.log("false");
+        setRepeatMessage("");
+      }
+    }
+    fetchDogBySanctionId(sanctionId.value.toLowerCase());
   };
 
   const addSanctionedDog = (data) => {
@@ -68,14 +87,17 @@ function SanctionedRegistration(props) {
     setAddedDogs([]);
   };
 
-  const fetchDog = async (name) => {
-    const fetchDog = await fetch(`${apiUrl}/api/register/event/sanctioned`, {
-      method: "GET",
-      headers: {
-        dog: JSON.stringify(name),
-      },
-    });
-    const response = await fetchDog.json();
+  const fetchDogByCallName = async (name) => {
+    const fetchDogByCallName = await fetch(
+      `${apiUrl}/api/register/event/sanctioned/callname`,
+      {
+        method: "GET",
+        headers: {
+          dog: JSON.stringify(name),
+        },
+      }
+    );
+    const response = await fetchDogByCallName.json();
     console.log(response.message);
     if (response.message === "No such dog") {
       setSanction("");
@@ -83,6 +105,27 @@ function SanctionedRegistration(props) {
     } else {
       setMessage();
       setSanction(response.message);
+    }
+  };
+
+  const fetchDogBySanctionId = async (id) => {
+    const fetchDogBySanctionId = await fetch(
+      `${apiUrl}/api/register/event/sanctioned/sanctionid`,
+      {
+        method: "GET",
+        headers: {
+          dog: JSON.stringify(id),
+        },
+      }
+    );
+    const response = await fetchDogBySanctionId.json();
+    console.log(response.message);
+    if (response.message === "No such dog") {
+      setCallName("");
+      setMessage(response.message);
+    } else {
+      setMessage();
+      setCallName(response.message);
     }
   };
 
@@ -95,10 +138,10 @@ function SanctionedRegistration(props) {
               <label>
                 Call Name *
                 <input
-                  value={callName}
-                  onChange={findDog}
+                  onChange={findDogByCallName}
                   id="call"
                   type="text"
+                  defaultValue={callNameOfDog}
                   placeholder="Call name"
                   name="callName"
                   ref={register()}
@@ -111,6 +154,8 @@ function SanctionedRegistration(props) {
               <label>
                 Sanction ID
                 <input
+                  id="sanction"
+                  onChange={findDogBySanctionId}
                   required
                   type="text"
                   defaultValue={sanction}
