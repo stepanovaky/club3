@@ -36,6 +36,7 @@ function NonsanctionedRegistration(props) {
     history.push("/confirm", {
       eventId: props.eventId,
       nonsanctionedEventRegistration: data,
+      nonsanctionedPrice: props.unsanctionedPrice,
     });
   };
   return (

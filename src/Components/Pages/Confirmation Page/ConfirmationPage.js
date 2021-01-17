@@ -42,7 +42,7 @@ function ConfirmationPage(props) {
     } else if (props.location.state.sanctionedEventRegistration) {
       setPrice(props.location.state.sanctionedPrice);
     } else {
-      setPrice(15);
+      setPrice(props.location.state.nonsanctionedPrice);
     }
   }, []);
 
@@ -99,8 +99,8 @@ function ConfirmationPage(props) {
                 shape: "pill",
                 size: "25",
               }}
-              amount={userPays}
-              // amount="0.01"
+              // amount={userPays}
+              amount="0.01"
               options={{
                 shippingPreference: "NO_SHIPPING",
               }}

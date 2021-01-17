@@ -29,7 +29,7 @@ function RegistrationEvent(props) {
       </Button>
       <p>
         You can add multiple dogs at a time, but they must be either all
-        sanctioned or all nonsanctioned at a time.
+        sanctioned or all nonsanctioned.
       </p>
       {ifRegistered === undefined ? null : ifRegistered ? (
         <SanctionedRegistration
