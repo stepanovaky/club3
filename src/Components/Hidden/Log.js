@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { apiUrl } from "../helpers/backend";
-import { Icon, Table, Pagination } from "semantic-ui-react";
-import { format } from "date-fns";
+import { Icon, Table, Pagination, Button } from "semantic-ui-react";
+import { format, addDays } from "date-fns";
 
 function Log() {
   const [logs, setLog] = useState([]);
@@ -54,9 +54,18 @@ function Log() {
     fetchLog();
   }, []);
 
+  const handleDownload = async () => {
+    const fetchExcel = fetch(`${apiUrl}/api/log/write/excel`);
+
+    const response = await fetchExcel;
+    console.log(response.url);
+    window.open(response.url, "_self");
+  };
+
   return (
     <div className="log">
       <div className="container">
+        <Button onClick={handleDownload}>Download Log</Button>
         <Pagination
           onPageChange={onChange}
           defaultActivePage={1}
@@ -102,11 +111,11 @@ function Log() {
                   <Table.Cell>
                     {log.transaction.timestamp !== undefined
                       ? format(
-                          log.transaction.timestamp._seconds,
+                          addDays(log.transaction.timestamp._seconds, 1),
                           "MMM do, h:mm"
                         )
                       : format(
-                          log.transaction.timeStamp._seconds,
+                          addDays(log.transaction.timeStamp._seconds, 1),
                           "MMM do, h:mm"
                         )}
                   </Table.Cell>
