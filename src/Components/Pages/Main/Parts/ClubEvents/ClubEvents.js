@@ -35,21 +35,21 @@ function ClubEvents(props) {
 
   const today = new Date();
 
-  const passed = [];
+  // const passed = [];
 
-  const passedDate = (arr) => {
-    arr.filter((item) => {
-      if (new Date(item.startDate).getTime() < addDays(today.getTime(), -1)) {
-      } else {
-        console.log("there");
-        passed.push(item);
-      }
-    });
-  };
+  // const passedDate = (arr) => {
+  //   arr.filter((item) => {
+  //     if (new Date(item.startDate).getTime() < addDays(today.getTime(), -1)) {
+  //     } else {
+  //       console.log("there");
+  //       passed.push(item);
+  //     }
+  //   });
+  // };
 
-  passedDate(events[0]);
+  // passedDate(events[0]);
 
-  console.log(passed);
+  // console.log(passed);
 
   const displayEvent = (one, index) => {
     return (
@@ -80,7 +80,7 @@ function ClubEvents(props) {
     );
   };
 
-  const listEvents = passed.map((one, index) => {
+  const listEvents = events[0].map((one, index) => {
     return displayEvent(one, index);
   });
 

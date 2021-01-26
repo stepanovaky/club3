@@ -11,12 +11,6 @@ function BackgroundImage() {
               <h1 className="background-image-content-heading">
                 Central Florida Sighthound Racing Club
               </h1>
-              {/* <p className="background-image-content-paragraph">
-                Ex exercitation sint enim qui nostrud cupidatat ea excepteur
-                veniam ipsum. Velit velit eiusmod cillum officia. Consectetur
-                culpa adipisicing veniam eu consectetur ex non officia sit
-                reprehenderit eiusmod tempor.
-              </p> */}
             </div>
           </div>
         </div>
